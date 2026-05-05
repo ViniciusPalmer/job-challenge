@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px #dfe1e5;
+  }
+
+  body {
+    background-color: #FFFFFF;
+    color: #000000;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body, input, textarea, button {
+    font: 400 1rem arial, sans-serif;
+  }
+}
