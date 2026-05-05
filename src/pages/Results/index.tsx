@@ -16,7 +16,7 @@ import { ResultContentMobile } from "./components/ResultContentMobile";
 import { NoResultsFound } from "./components/NoResultsFound";
 import { AnimalsDataContext } from "../../contexts/animalData";
 import { SearchInputContext } from "../../contexts/searchInput";
-import { IAnimal } from "../types/animal";
+import { IAnimal } from "../../types/animal";
 import { SeoMetadata } from "../../components/SeoMetadata";
 
 export function Results() {

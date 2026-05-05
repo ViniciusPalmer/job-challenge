@@ -1,12 +1,20 @@
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { Results } from "./pages/Results";
+
+const Home = lazy(() =>
+  import("./pages/Home").then((m) => ({ default: (m as { Home: React.ComponentType<unknown> }).Home }))
+);
+const Results = lazy(() =>
+  import("./pages/Results").then((m) => ({ default: (m as { Results: React.ComponentType<unknown> }).Results }))
+);
 
 export function Router() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/results" element={<Results />} />
-    </Routes>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/results" element={<Results />} />
+      </Routes>
+    </Suspense>
   );
 }
