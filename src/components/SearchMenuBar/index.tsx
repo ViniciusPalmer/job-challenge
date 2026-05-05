@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import SearchIcon from "../../assets/search_icon.svg";
@@ -15,7 +15,7 @@ export function SearchMenuBar() {
     setSearchInput("");
   };
 
-  function submitSearchInput(e: any) {
+  function submitSearchInput(e: React.FormEvent) {
     e.preventDefault();
     if (location.pathname === "/") return navigate("/results");
   }
@@ -28,11 +28,15 @@ export function SearchMenuBar() {
       <button type="submit" aria-label="Submit search" className="bg-white border-none p-0 m-0">
         <img className="w-4 mr-2" src={SearchIcon} alt="" />
       </button>
+      <label className="sr-only" htmlFor="search-input">
+        Search
+      </label>
       <input
+        id="search-input"
         className="w-full mr-2 h-full p-0 border-none text-base"
         type="text"
         value={searchInput}
-        onChange={(value) => setSearchInput(value.target.value)}
+        onChange={(e) => setSearchInput(e.target.value)}
       />
       <img
         className="w-4 hover:cursor-pointer hover:scale-110 transition-transform duration-300"
