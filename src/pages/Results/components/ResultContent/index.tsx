@@ -10,7 +10,9 @@ export function ResultContent({ animal }: IResultContent) {
     <ResultCardContainer>
       <img src={animal.image} alt={animal.title} />
       <SpanContent>{animal.url}</SpanContent>
-      <TittleText href="#">{animal.title}</TittleText>
+      <TittleText as="a" href={animal.url} target="_blank" rel="noopener noreferrer">
+        {animal.title}
+      </TittleText>
       <SpanContent>{animal.description}</SpanContent>
     </ResultCardContainer>
   );

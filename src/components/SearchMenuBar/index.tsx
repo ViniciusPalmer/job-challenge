@@ -23,15 +23,15 @@ export function SearchMenuBar() {
 
   return (
     <SearchContainer onSubmit={submitSearchInput}>
-      <button type="submit">
-        <img src={SearchIcon} alt="Search Icon" />
+      <button type="submit" aria-label="Submit search">
+        <img src={SearchIcon} alt="" />
       </button>
       <input
         type="text"
         value={searchInput}
         onChange={(value) => setSearchInput(value.target.value)}
       />
-      <img src={CloseIcon} alt="Close Icon" onClick={resetSearch} />
+      <img src={CloseIcon} alt="" aria-label="Clear search" onClick={resetSearch} />
     </SearchContainer>
   );
 }

@@ -20,12 +20,12 @@ export function ResultHeader() {
   return (
     <HeaderContainer>
       <SearchContainer>
-        <GoogleImg src={googleIcon} alt="Google Image" onClick={returnToMain} />
+        <GoogleImg src={googleIcon} alt="Go to home" onClick={returnToMain} />
         <SearchMenuBar />
       </SearchContainer>
       <IconsContainer>
-        <img src={googleAppsIcon} alt="Google Apps" />
-        <img src={userAvatar} alt="Female Avatar" />
+        <img src={googleAppsIcon} alt="" />
+        <img src={userAvatar} alt="" />
       </IconsContainer>
     </HeaderContainer>
   );
