@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { SearchContainer } from "./styles";
 
 import SearchIcon from "../../assets/search_icon.svg";
 import CloseIcon from "../../assets/close_icon.svg";
@@ -22,16 +21,26 @@ export function SearchMenuBar() {
   }
 
   return (
-    <SearchContainer onSubmit={submitSearchInput}>
-      <button type="submit" aria-label="Submit search">
-        <img src={SearchIcon} alt="" />
+    <form
+      className="flex w-full items-center justify-center min-h-[44px] bg-white border border-transparent shadow-search-bar rounded-full mx-6 px-4"
+      onSubmit={submitSearchInput}
+    >
+      <button type="submit" aria-label="Submit search" className="bg-white border-none p-0 m-0">
+        <img className="w-4 mr-2" src={SearchIcon} alt="" />
       </button>
       <input
+        className="w-full mr-2 h-full p-0 border-none text-base"
         type="text"
         value={searchInput}
         onChange={(value) => setSearchInput(value.target.value)}
       />
-      <img src={CloseIcon} alt="" aria-label="Clear search" onClick={resetSearch} />
-    </SearchContainer>
+      <img
+        className="w-4 hover:cursor-pointer hover:scale-110 transition-transform duration-300"
+        src={CloseIcon}
+        alt=""
+        aria-label="Clear search"
+        onClick={resetSearch}
+      />
+    </form>
   );
 }
