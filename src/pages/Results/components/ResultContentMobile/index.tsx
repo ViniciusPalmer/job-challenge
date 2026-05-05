@@ -1,13 +1,5 @@
 import { ResultContent } from "../ResultContent";
 import { IAnimal } from "../../../../types/animal";
-import {
-  ResultCardContainer,
-  URLText,
-  LinkButton,
-  DescriptionText,
-  Overlay,
-  Content,
-} from "./styles";
 import * as Dialog from "@radix-ui/react-dialog";
 
 interface IResultCard {
@@ -21,22 +13,26 @@ export function ResultContentMobile({ animal, setAnimal }: IResultCard) {
   }
 
   return (
-    <ResultCardContainer>
+    <div className="flex flex-col max-h-[200px] items-start mb-7">
       <Dialog.Root>
-        <URLText>{animal.url}</URLText>
+        <span className="pointer-events-none text-xs text-gray-300 mb-2">{animal.url}</span>
         <Dialog.Trigger asChild>
-          <LinkButton onClick={selectAnimal}>{animal.title}</LinkButton>
+          <button onClick={selectAnimal} className="text-2xl text-blue-300 mb-3 bg-transparent border-none cursor-pointer hover:brightness-60 transition-all">
+            {animal.title}
+          </button>
         </Dialog.Trigger>
-        <DescriptionText>{animal.description}</DescriptionText>
+        <a className="text-base text-gray-300 mb-3 hover:brightness-60 transition-all">
+          {animal.description}
+        </a>
 
         <Dialog.Portal>
-          <Overlay />
-          <Content>
+          <Dialog.Overlay className="fixed inset-0 bg-black/75" />
+          <Dialog.Content className="min-w-8 rounded bg-gray-100 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <ResultContent animal={animal} />
             <Dialog.Close />
-          </Content>
+          </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
-    </ResultCardContainer>
+    </div>
   );
 }
