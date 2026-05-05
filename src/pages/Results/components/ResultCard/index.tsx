@@ -5,14 +5,7 @@ import {
   DescriptionText,
 } from "./styles";
 
-interface IAnimal {
-  type: string;
-  id: number;
-  url: string;
-  title: string;
-  description: string;
-  image: string;
-}
+import { IAnimal } from "../../../../types/animal";
 
 interface IResultCard {
   animal: IAnimal;

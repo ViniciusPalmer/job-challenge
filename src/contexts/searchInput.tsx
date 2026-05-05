@@ -9,7 +9,10 @@ interface IChildren {
   children: ReactNode;
 }
 
-export const SearchInputContext = createContext({} as ISearchInput);
+export const SearchInputContext = createContext<ISearchInput>({
+  searchInput: "",
+  setSearchInput: () => {},
+});
 
 export function SearchInputProvider({ children }: IChildren) {
   const [searchInput, setSearchInput] = useState<string>("");

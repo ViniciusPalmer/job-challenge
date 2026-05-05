@@ -1,4 +1,5 @@
 import { ResultContent } from "../ResultContent";
+import { IAnimal } from "../../../../types/animal";
 import {
   ResultCardContainer,
   URLText,
@@ -8,15 +9,6 @@ import {
   Content,
 } from "./styles";
 import * as Dialog from "@radix-ui/react-dialog";
-
-interface IAnimal {
-  type: string;
-  id: number;
-  url: string;
-  title: string;
-  description: string;
-  image: string;
-}
 
 interface IResultCard {
   animal: IAnimal;

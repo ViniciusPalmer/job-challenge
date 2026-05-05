@@ -1,14 +1,8 @@
 import { ReactNode, createContext, useState, useEffect } from "react";
 import data from "../API/fakerAnimals";
+import { IAnimal } from "../types/animal";
 
-interface IAnimal {
-  type: string;
-  id: number;
-  url: string;
-  title: string;
-  description: string;
-  image: string;
-}
+export type { IAnimal };
 
 interface IAnimalContextType {
   animalsData: IAnimal[];
@@ -18,7 +12,9 @@ interface IChildren {
   children: ReactNode;
 }
 
-export const AnimalsDataContext = createContext({} as IAnimalContextType);
+export const AnimalsDataContext = createContext<IAnimalContextType>({
+  animalsData: [],
+});
 
 export function AnimalsDataProvider({ children }: IChildren) {
   const [animalsData, setAnimalsData] = useState<IAnimal[]>([]);

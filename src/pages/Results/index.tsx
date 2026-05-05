@@ -16,15 +16,7 @@ import { ResultContentMobile } from "./components/ResultContentMobile";
 import { NoResultsFound } from "./components/NoResultsFound";
 import { AnimalsDataContext } from "../../contexts/animalData";
 import { SearchInputContext } from "../../contexts/searchInput";
-
-interface IAnimal {
-  type: string;
-  id: number;
-  url: string;
-  title: string;
-  description: string;
-  image: string;
-}
+import { IAnimal } from "../types/animal";
 
 export function Results() {
   const [itemOffset, setItemOffset] = useState(0);
