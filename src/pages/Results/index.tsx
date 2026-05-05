@@ -1,23 +1,15 @@
 import { useState, useContext, useEffect, useRef, useCallback, useMemo } from "react";
-import {
-  ResultContainer,
-  ResultData,
-  SearchResult,
-  ResultMainContent,
-  StyledReactPaginate,
-} from "./styles";
-
 import { Footer } from "../../components/Footer";
 import { ResultHeader } from "./components/ResultsHeader";
 import { ResultCard } from "./components/ResultCard";
 import { ResultContent } from "./components/ResultContent";
 import { ResultContentMobile } from "./components/ResultContentMobile";
-
 import { NoResultsFound } from "./components/NoResultsFound";
 import { AnimalsDataContext } from "../../contexts/animalData";
 import { SearchInputContext } from "../../contexts/searchInput";
 import { IAnimal } from "../../types/animal";
 import { SeoMetadata } from "../../components/SeoMetadata";
+import ReactPaginate from "react-paginate";
 
 export function Results() {
   const [itemOffset, setItemOffset] = useState(0);
@@ -70,7 +62,7 @@ export function Results() {
   const renderSearchResultPage = () => {
     return (
       <>
-        <SearchResult>
+        <section className="w-[55vw] flex flex-col items-start lg:mr-12 sm:w-[99vw]">
           {currentItems.map((animal) => (
             <ResultCard
               key={animal.id}
@@ -78,7 +70,7 @@ export function Results() {
               setAnimal={handleCardSelected}
             />
           ))}
-        </SearchResult>
+        </section>
         {selectedCard && <ResultContent animal={selectedCard} />}
       </>
     );
@@ -86,7 +78,7 @@ export function Results() {
 
   const renderSearchResultPageMobile = () => {
     return (
-      <SearchResult>
+      <section className="w-[55vw] flex flex-col items-start lg:mr-12 sm:w-[99vw]">
         {currentItems.map((animal) => (
           <ResultContentMobile
             key={animal.id}
@@ -94,7 +86,7 @@ export function Results() {
             setAnimal={handleCardSelected}
           />
         ))}
-      </SearchResult>
+      </section>
     );
   };
 
@@ -122,15 +114,17 @@ export function Results() {
   };
 
   return (
-    <ResultContainer>
-      <SeoMetadata 
-        title={`Animal Search${searchInput ? ` - ${searchInput}` : ""}`} 
+    <main className="w-screen h-screen flex flex-col items-center justify-start">
+      <SeoMetadata
+        title={`Animal Search${searchInput ? ` - ${searchInput}` : ""}`}
         description={`Search results for ${searchInput}`}
       />
       <ResultHeader />
-      <ResultMainContent>
-        <ResultData>{handleScreen()}</ResultData>
-        <StyledReactPaginate
+      <div className="w-full h-[80vh] flex flex-col items-center justify-start">
+        <div className="flex flex-row items-start w-screen h-full p-6 cursor-pointer overflow-auto overflow-x-hidden">
+          {handleScreen()}
+        </div>
+        <ReactPaginate
           breakLabel="..."
           nextLabel=">"
           onPageChange={handlePageClick}
@@ -138,9 +132,12 @@ export function Results() {
           pageCount={pageCount}
           previousLabel="<"
           renderOnZeroPageCount={null}
+          className="flex flex-nowrap text-lg cursor-pointer mt-4"
+          pageClassName="w-[30px] h-[30px] flex items-center justify-center border border-gray-100 m-0 mx-2 hover:bg-gray-100 transition-all duration-1000"
+          activeClassName="bg-gray-100 border border-gray-100 font-bold"
         />
-      </ResultMainContent>
+      </div>
       <Footer />
-    </ResultContainer>
+    </main>
   );
 }
