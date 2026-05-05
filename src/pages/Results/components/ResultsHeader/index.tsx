@@ -1,9 +1,3 @@
-import {
-  HeaderContainer,
-  SearchContainer,
-  IconsContainer,
-  GoogleImg,
-} from "./styles";
 import { useNavigate } from "react-router-dom";
 
 import googleAppsIcon from "../../../../assets/google_apps_icon.svg";
@@ -18,15 +12,15 @@ export function ResultHeader() {
     navigate("/");
   }
   return (
-    <HeaderContainer>
-      <SearchContainer>
-        <GoogleImg src={googleIcon} alt="Go to home" onClick={returnToMain} />
+    <header className="flex w-full items-center justify-between p-6 border-b border-gray-150">
+      <div className="flex items-center">
+        <img className="h-12 cursor-pointer md:scale-150 md:w-auto md:h-auto" src={googleIcon} alt="Go to home" onClick={returnToMain} />
         <SearchMenuBar />
-      </SearchContainer>
-      <IconsContainer>
-        <img src={googleAppsIcon} alt="" />
-        <img src={userAvatar} alt="" />
-      </IconsContainer>
-    </HeaderContainer>
+      </div>
+      <div className="hidden sm:flex flex-row p-2 w-[150px] h-[60px]">
+        <img className="max-w-[44px]" src={googleAppsIcon} alt="" />
+        <img className="max-w-[44px] ml-4" src={userAvatar} alt="" />
+      </div>
+    </header>
   );
 }
