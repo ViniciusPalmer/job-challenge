@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, useRef } from "react";
+import { useState, useContext, useEffect, useRef, useCallback, useMemo } from "react";
 import {
   ResultContainer,
   ResultData,
@@ -28,24 +28,31 @@ export function Results() {
   const { searchInput } = useContext(SearchInputContext);
 
   const windowWidth = useRef(window.innerWidth);
-  const currentScreenSize = windowWidth.current | 0;
+  const currentScreenSize = Number(windowWidth.current);
   const itemsPerPage = 4;
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = filteredAnimalsList.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(filteredAnimalsList.length / itemsPerPage);
+  const currentItems = useMemo(
+    () => filteredAnimalsList.slice(itemOffset, endOffset),
+    [filteredAnimalsList, itemOffset, endOffset]
+  );
+  const pageCount = useMemo(
+    () => Math.ceil(filteredAnimalsList.length / itemsPerPage),
+    [filteredAnimalsList.length]
+  );
 
-  function filterBySearchTerm(searchTerm: string, data: IAnimal[]) {
-    const filteredData = data.filter(
+  const filterBySearchTerm = useCallback((searchTerm: string, data: IAnimal[]) => {
+    const lowerSearch = searchTerm.toLowerCase();
+    return data.filter(
       (item) =>
-        item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.type.toLowerCase().includes(searchTerm.toLowerCase())
+        item.title.toLowerCase().includes(lowerSearch) ||
+        item.type.toLowerCase().includes(lowerSearch)
     );
-    setFilteredAnimalsList(filteredData);
-  }
+  }, []);
 
   useEffect(() => {
-    filterBySearchTerm(searchInput, animalsData);
-  }, [animalsData, searchInput]);
+    const result = filterBySearchTerm(searchInput, animalsData);
+    setFilteredAnimalsList(result);
+  }, [animalsData, searchInput, filterBySearchTerm]);
 
   useEffect(() => {
     if (filteredAnimalsList.length > 0 && searchInput) {
@@ -91,16 +98,13 @@ export function Results() {
     );
   };
 
-  const generateSuggestionList = (animals: IAnimal[]) => {
-    let newList = animals.map((item) => item.type);
-    return (newList = [...new Set(newList)].slice(0, 5));
-  };
+  const suggestionList = useMemo(() => {
+    const types = animalsData.map((item) => item.type);
+    return [...new Set(types)].slice(0, 5);
+  }, [animalsData]);
 
   const renderNoResultPage = () => {
-    const getResults = generateSuggestionList(animalsData);
-    return (
-      <NoResultsFound searchText={searchInput} suggestionList={getResults} />
-    );
+    return <NoResultsFound searchText={searchInput} suggestionList={suggestionList} />;
   };
 
   const handleScreen = () => {
@@ -110,7 +114,7 @@ export function Results() {
     else return renderSearchResultPageMobile();
   };
 
-  const handlePageClick = (event: any) => {
+  const handlePageClick = (event: { selected: number }) => {
     const newOffset =
       (event.selected * itemsPerPage) % filteredAnimalsList.length;
     setItemOffset(newOffset);
