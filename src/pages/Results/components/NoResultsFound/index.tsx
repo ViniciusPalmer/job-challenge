@@ -1,5 +1,3 @@
-import { NoResultsContainer } from "./styles";
-
 interface INoResultsFound {
   searchText?: string;
   suggestionList: string[];
@@ -22,13 +20,13 @@ export function NoResultsFound({
       {isEmptyArray(suggestionList) ? (
         noSuggestionsErrorDescription()
       ) : (
-        <NoResultsContainer>
+        <div className="flex flex-col">
           {searchText && (
-            <span>
+            <span className="text-base mb-8">
               No Results Found for: <b>{searchText}</b>{" "}
             </span>
           )}
-          <span>
+          <span className="text-base">
             Try looking for:{" "}
             {suggestionList.map((item, index) => (
               <b key={index}>
@@ -37,7 +35,7 @@ export function NoResultsFound({
             ))}
             .
           </span>
-        </NoResultsContainer>
+        </div>
       )}
     </>
   );
