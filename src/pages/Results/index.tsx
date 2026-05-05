@@ -17,6 +17,7 @@ import { NoResultsFound } from "./components/NoResultsFound";
 import { AnimalsDataContext } from "../../contexts/animalData";
 import { SearchInputContext } from "../../contexts/searchInput";
 import { IAnimal } from "../types/animal";
+import { SeoMetadata } from "../../components/SeoMetadata";
 
 export function Results() {
   const [itemOffset, setItemOffset] = useState(0);
@@ -118,6 +119,10 @@ export function Results() {
 
   return (
     <ResultContainer>
+      <SeoMetadata 
+        title={`Animal Search${searchInput ? ` - ${searchInput}` : ""}`} 
+        description={`Search results for ${searchInput}`}
+      />
       <ResultHeader />
       <ResultMainContent>
         <ResultData>{handleScreen()}</ResultData>
