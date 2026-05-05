@@ -1,19 +1,18 @@
-import { ResultCardContainer, SpanContent, TittleText } from "./styles";
 import { IAnimal } from "../../../../types/animal";
 
-interface IResultContent {
+interface ResultContentProps {
   animal: IAnimal;
 }
 
-export function ResultContent({ animal }: IResultContent) {
+export function ResultContent({ animal }: ResultContentProps) {
   return (
-    <ResultCardContainer>
-      <img src={animal.image} alt={animal.title} />
-      <SpanContent>{animal.url}</SpanContent>
-      <TittleText as="a" href={animal.url} target="_blank" rel="noopener noreferrer">
+    <article className="flex flex-col items-start justify-center max-w-[30vw] p-8 border border-gray-150 md:max-w-full md:w-[80vw] md:p-4">
+      <img className="w-full mb-4" src={animal.image} alt={animal.title} />
+      <span className="text-xs text-gray-300 mb-2 max-w-[90%]">{animal.url}</span>
+      <a className="text-2xl text-blue-300 mb-4 hover:brightness-60 transition-all" href={animal.url} target="_blank" rel="noopener noreferrer">
         {animal.title}
-      </TittleText>
-      <SpanContent>{animal.description}</SpanContent>
-    </ResultCardContainer>
+      </a>
+      <span className="text-xs text-gray-300 mb-2 max-w-[90%]">{animal.description}</span>
+    </article>
   );
 }
