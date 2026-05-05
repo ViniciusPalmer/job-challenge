@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState, useEffect } from "react";
-import data from "../API/fakerAnimals";
+import data from "../data/staticAnimals";
 import { IAnimal } from "../types/animal";
 
 export type { IAnimal };
