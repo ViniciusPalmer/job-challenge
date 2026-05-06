@@ -1,7 +1,7 @@
-import { Footer } from "../../components/Footer";
+import { Footer } from "../../shared/components/Footer";
 import { HomeHeader } from "./components/HomeHeader";
 import { SearchMenuBar } from "../../components/SearchMenuBar";
-import { SeoMetadata } from "../../components/SeoMetadata";
+import { SeoMetadata } from "../../shared/components/SeoMetadata";
 
 import GoogleLogo from "../../assets/google_icon.png";
 

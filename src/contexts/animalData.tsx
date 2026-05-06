@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState, useEffect } from "react";
 import data from "../data/staticAnimals";
-import { IAnimal } from "../types/animal";
+import { IAnimal } from "../shared/types/animal";
 
 export type { IAnimal };
 

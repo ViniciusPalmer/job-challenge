@@ -1,8 +1,8 @@
 export interface IAnimal {
-  type: string;
   id: number;
-  url: string;
   title: string;
-  description: string;
+  type: string;
   image: string;
+  description: string;
+  url: string;
 }

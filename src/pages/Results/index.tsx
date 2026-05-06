@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect, useRef, useCallback, useMemo } from "react";
-import { Footer } from "../../components/Footer";
+import { Footer } from "../../shared/components/Footer";
 import { ResultHeader } from "./components/ResultsHeader";
 import { ResultCard } from "./components/ResultCard";
 import { ResultContent } from "./components/ResultContent";
@@ -7,8 +7,8 @@ import { ResultContentMobile } from "./components/ResultContentMobile";
 import { NoResultsFound } from "./components/NoResultsFound";
 import { AnimalsDataContext } from "../../contexts/animalData";
 import { SearchInputContext } from "../../contexts/searchInput";
-import { IAnimal } from "../../types/animal";
-import { SeoMetadata } from "../../components/SeoMetadata";
+import { IAnimal } from "../../shared/types/animal";
+import { SeoMetadata } from "../../shared/components/SeoMetadata";
 import ReactPaginate from "react-paginate";
 
 export function Results() {

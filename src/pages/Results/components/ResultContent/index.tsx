@@ -1,4 +1,4 @@
-import { IAnimal } from "../../../../types/animal";
+import { IAnimal } from "../../../../shared/types/animal";
 
 interface ResultContentProps {
   animal: IAnimal;

@@ -1,5 +1,5 @@
 import { ResultContent } from "../ResultContent";
-import { IAnimal } from "../../../../types/animal";
+import { IAnimal } from "../../../../shared/types/animal";
 import * as Dialog from "@radix-ui/react-dialog";
 
 interface IResultCard {

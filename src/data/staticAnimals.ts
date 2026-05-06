@@ -1,4 +1,4 @@
-import { IAnimal } from "../types/animal";
+import { IAnimal } from "../shared/types/animal";
 
 const staticAnimals: IAnimal[] = [
   {
