@@ -10,8 +10,9 @@ describe("App routes", () => {
   it("renders the home route at the root path", async () => {
     render(<App />);
 
-    expect(await screen.findByRole("heading", { name: "Animal Search Home" })).toBeInTheDocument();
-    expect(screen.queryByAltText("Go to home")).not.toBeInTheDocument();
+    expect(screen.getByText("Loading...")).toBeInTheDocument();
+    expect(await screen.findByText(/Agile Content/i)).toBeInTheDocument();
+    expect(screen.queryByText(/Try looking for:/i)).not.toBeInTheDocument();
   });
 
   it("renders the results route at /results", async () => {
@@ -19,7 +20,8 @@ describe("App routes", () => {
 
     render(<App />);
 
-    expect(await screen.findByAltText("Go to home")).toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "Animal Search Home" })).not.toBeInTheDocument();
+    expect(screen.getByText("Loading...")).toBeInTheDocument();
+    expect(await screen.findByText(/Try looking for:/i)).toBeInTheDocument();
+    expect(screen.queryByText(/Agile Content/i)).not.toBeInTheDocument();
   });
 });
