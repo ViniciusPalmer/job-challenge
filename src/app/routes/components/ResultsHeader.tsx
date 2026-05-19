@@ -1,8 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-import googleAppsIcon from "../../../assets/google_apps_icon.svg";
-import userAvatar from "../../../assets/user_avatar.svg";
-import googleIcon from "../../../assets/google_icon.png";
 import { SearchMenuBar } from "../../../features/animal-search/components/SearchMenuBar";
 
 export function ResultsHeader() {
@@ -14,21 +11,25 @@ export function ResultsHeader() {
   }
 
   return (
-    <header className="flex w-full items-center justify-between p-6 border-b border-gray-150">
-      <div className="flex items-center">
+    <header className="rounded-[28px] border border-white/10 bg-white/5 p-4 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur sm:p-5">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <button
           type="button"
           aria-label="Go to home"
-          className="bg-transparent border-none p-0 m-0 cursor-pointer"
+          className="flex w-fit items-center gap-3 rounded-full border border-white/10 bg-slate-950/60 px-4 py-2 text-left text-slate-100 transition hover:border-lime-300/60 hover:text-lime-200"
           onClick={returnToMain}
         >
-          <img className="h-12 md:scale-150 md:w-auto md:h-auto" src={googleIcon} alt="" />
+          <span className="inline-flex h-2.5 w-2.5 rounded-full bg-lime-300" />
+          <span>
+            <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+              Back to search
+            </span>
+            <span className="block text-base font-semibold">Animal Search</span>
+          </span>
         </button>
-        <SearchMenuBar />
-      </div>
-      <div className="hidden sm:flex flex-row p-2 w-[150px] h-[60px]">
-        <img className="max-w-[44px]" src={googleAppsIcon} alt="" />
-        <img className="max-w-[44px] ml-4" src={userAvatar} alt="" />
+        <div className="w-full max-w-3xl lg:flex-1 lg:max-w-[720px]">
+          <SearchMenuBar variant="results" />
+        </div>
       </div>
     </header>
   );

@@ -5,4 +5,8 @@ export interface IAnimal {
   image: string;
   description: string;
   url: string;
+  habitat: string;
+  lifespan: string;
+  diet: string;
+  summaryTag: string;
 }

@@ -33,10 +33,26 @@ export function ResultsView({ animalsData, searchInput }: ResultsViewProps) {
   }, []);
 
   useEffect(() => {
-    if (selectedCard && !filteredAnimals.some((animal) => animal.id === selectedCard.id)) {
+    if (currentItems.length === 0) {
       setSelectedCard(null);
+      return;
     }
-  }, [filteredAnimals, selectedCard]);
+
+    if (!isDesktop) {
+      if (selectedCard && currentItems.some((animal) => animal.id === selectedCard.id)) {
+        return;
+      }
+
+      setSelectedCard(null);
+      return;
+    }
+
+    if (selectedCard && currentItems.some((animal) => animal.id === selectedCard.id)) {
+      return;
+    }
+
+    setSelectedCard(currentItems[0]);
+  }, [currentItems, isDesktop, selectedCard]);
 
   useEffect(() => {
     setCurrentPage(0);
@@ -45,7 +61,6 @@ export function ResultsView({ animalsData, searchInput }: ResultsViewProps) {
   function onPageChange(selected: number) {
     setCurrentPage(selected);
     handlePageChange(selected);
-    setSelectedCard(null);
   }
 
   if (!foundResults) {
@@ -57,17 +72,37 @@ export function ResultsView({ animalsData, searchInput }: ResultsViewProps) {
       <div className="flex flex-row items-start w-screen h-full p-6 cursor-pointer overflow-auto overflow-x-hidden">
         {isDesktop ? (
           <>
-            <section className="w-[55vw] flex flex-col items-start lg:mr-12 sm:w-[99vw]">
+            <section className="mr-12 flex w-full max-w-3xl flex-col items-start">
               {currentItems.map((animal) => (
-                <ResultCard key={animal.id} animal={animal} setAnimal={setSelectedCard} />
+                <ResultCard
+                  key={animal.id}
+                  animal={animal}
+                  isActive={selectedCard?.id === animal.id}
+                  onSelect={() => setSelectedCard(animal)}
+                />
               ))}
             </section>
-            {selectedCard && <ResultContent animal={selectedCard} />}
+            <section className="w-full max-w-[32rem]">
+              {selectedCard && <ResultContent animal={selectedCard} />}
+            </section>
           </>
         ) : (
-          <section className="w-[55vw] flex flex-col items-start lg:mr-12 sm:w-[99vw]">
+          <section className="flex w-full flex-col items-start">
             {currentItems.map((animal) => (
-              <ResultContentMobile key={animal.id} animal={animal} setAnimal={setSelectedCard} />
+              <ResultContentMobile
+                key={animal.id}
+                animal={animal}
+                isActive={selectedCard?.id === animal.id}
+                onToggle={() => {
+                  setSelectedCard((currentSelectedCard) => {
+                    if (currentSelectedCard?.id === animal.id) {
+                      return null;
+                    }
+
+                    return animal;
+                  });
+                }}
+              />
             ))}
           </section>
         )}

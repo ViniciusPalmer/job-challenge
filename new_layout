@@ -1,0 +1,1034 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 1920,
+      "height": 980,
+      "fill": [
+        {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 180,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#06070B",
+              "position": 0
+            },
+            {
+              "color": "#0E1118",
+              "position": 1
+            }
+          ]
+        },
+        {
+          "type": "gradient",
+          "gradientType": "radial",
+          "enabled": true,
+          "opacity": 0.45,
+          "rotation": 0,
+          "size": {
+            "width": 0.5,
+            "height": 0.5
+          },
+          "colors": [
+            {
+              "color": "#7CFF7C",
+              "position": 0
+            },
+            {
+              "color": "#7CFF7C00",
+              "position": 1
+            }
+          ],
+          "center": {
+            "x": 0.18,
+            "y": 0.2
+          }
+        },
+        {
+          "type": "gradient",
+          "gradientType": "radial",
+          "enabled": true,
+          "opacity": 0.28,
+          "rotation": 0,
+          "size": {
+            "width": 0.45,
+            "height": 0.45
+          },
+          "colors": [
+            {
+              "color": "#4AA3FF",
+              "position": 0
+            },
+            {
+              "color": "#4AA3FF00",
+              "position": 1
+            }
+          ],
+          "center": {
+            "x": 0.82,
+            "y": 0.18
+          }
+        }
+      ],
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "wUhZe",
+          "x": 80,
+          "y": 80,
+          "name": "Search Screen",
+          "clip": true,
+          "width": 700,
+          "height": 820,
+          "fill": [
+            {
+              "type": "gradient",
+              "gradientType": "linear",
+              "enabled": true,
+              "rotation": 180,
+              "size": {
+                "height": 1
+              },
+              "colors": [
+                {
+                  "color": "#0B0F16",
+                  "position": 0
+                },
+                {
+                  "color": "#111827",
+                  "position": 1
+                }
+              ]
+            },
+            {
+              "type": "gradient",
+              "gradientType": "radial",
+              "enabled": true,
+              "opacity": 0.18,
+              "rotation": 0,
+              "size": {
+                "width": 0.55,
+                "height": 0.4
+              },
+              "colors": [
+                {
+                  "color": "#7CFF7C",
+                  "position": 0
+                },
+                {
+                  "color": "#7CFF7C00",
+                  "position": 1
+                }
+              ],
+              "center": {
+                "x": 0.68,
+                "y": 0.12
+              }
+            }
+          ],
+          "cornerRadius": 28,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#FFFFFF1A"
+          },
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#00000066",
+            "offset": {
+              "x": 0,
+              "y": 30
+            },
+            "blur": 90
+          },
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 56,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "xuQTd",
+              "name": "heroWrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "IwXzQ",
+                  "name": "brandPill",
+                  "fill": "#FFFFFF0D",
+                  "cornerRadius": 999,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#FFFFFF14"
+                  },
+                  "gap": 10,
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "r2ZF7",
+                      "name": "brandDot",
+                      "fill": "#7CFF7C",
+                      "width": 10,
+                      "height": 10
+                    },
+                    {
+                      "type": "text",
+                      "id": "BVRmR",
+                      "name": "brandText",
+                      "fill": "#E5E7EB",
+                      "content": "ANIMAL SEARCH",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600",
+                      "letterSpacing": 1.2
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "8RlZU",
+                  "name": "headline",
+                  "fill": "#F8FAFC",
+                  "textGrowth": "fixed-width",
+                  "width": 560,
+                  "content": "Find animals instantly",
+                  "lineHeight": 1.05,
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 54,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "AO4HE",
+                  "name": "subtitle",
+                  "fill": "#AAB3C5",
+                  "textGrowth": "fixed-width",
+                  "width": 520,
+                  "content": "Search an animal in English and explore fast, rich results designed for quick discovery.",
+                  "lineHeight": 1.45,
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 18
+                },
+                {
+                  "type": "frame",
+                  "id": "NYfmL",
+                  "name": "searchShell",
+                  "width": 560,
+                  "fill": "#F8FAFC",
+                  "cornerRadius": 24,
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#7CFF7C22",
+                    "offset": {
+                      "x": 0,
+                      "y": 16
+                    },
+                    "blur": 50
+                  },
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 18,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "F0z2z",
+                      "name": "searchRow",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "gwpQh",
+                          "name": "searchIconWrap",
+                          "width": 48,
+                          "height": 48,
+                          "fill": "#10141D",
+                          "cornerRadius": 16,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "1c181",
+                              "name": "searchIcon",
+                              "width": 20,
+                              "height": 20,
+                              "iconFontName": "search",
+                              "iconFontFamily": "lucide",
+                              "fill": "#7CFF7C"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "sz32B",
+                          "name": "searchText",
+                          "fill": "#64748B",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Search an animal in English",
+                          "fontFamily": "Inter",
+                          "fontSize": 18,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SrhYV",
+                      "name": "hintRow",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "tmTbd",
+                          "name": "hintText",
+                          "fill": "#0F172A",
+                          "content": "Try: lion, fox, dolphin",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "HP84P",
+                          "name": "goPill",
+                          "fill": "#10141D",
+                          "cornerRadius": 999,
+                          "gap": 8,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "KVZ9z",
+                              "name": "goText",
+                              "fill": "#F8FAFC",
+                              "content": "Press Enter",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "imdzg",
+                  "name": "footerText",
+                  "fill": "#8B95A7",
+                  "content": "Minimal input. Instant discovery. Built for curious minds.",
+                  "fontFamily": "Inter",
+                  "fontSize": 14
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "2RxAA",
+          "x": 840,
+          "y": 80,
+          "name": "Result Screen",
+          "clip": true,
+          "width": 1000,
+          "height": 820,
+          "fill": [
+            {
+              "type": "gradient",
+              "gradientType": "linear",
+              "enabled": true,
+              "rotation": 180,
+              "size": {
+                "height": 1
+              },
+              "colors": [
+                {
+                  "color": "#0A0E14",
+                  "position": 0
+                },
+                {
+                  "color": "#11161E",
+                  "position": 1
+                }
+              ]
+            },
+            {
+              "type": "gradient",
+              "gradientType": "radial",
+              "enabled": true,
+              "opacity": 0.12,
+              "rotation": 0,
+              "size": {
+                "width": 0.4,
+                "height": 0.35
+              },
+              "colors": [
+                {
+                  "color": "#7CFF7C",
+                  "position": 0
+                },
+                {
+                  "color": "#7CFF7C00",
+                  "position": 1
+                }
+              ],
+              "center": {
+                "x": 0.88,
+                "y": 0.1
+              }
+            }
+          ],
+          "cornerRadius": 28,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#FFFFFF14"
+          },
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#00000066",
+            "offset": {
+              "x": 0,
+              "y": 30
+            },
+            "blur": 90
+          },
+          "gap": 28,
+          "padding": 32,
+          "children": [
+            {
+              "type": "rectangle",
+              "cornerRadius": 999,
+              "id": "KpVl4",
+              "layoutPosition": "absolute",
+              "x": 380,
+              "y": 48,
+              "name": "streak2",
+              "rotation": -8,
+              "fill": "#4AA3FF44",
+              "width": 360,
+              "height": 6,
+              "effect": {
+                "type": "blur",
+                "radius": 28
+              }
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 999,
+              "id": "Ow6op",
+              "layoutPosition": "absolute",
+              "x": 280,
+              "y": 720,
+              "name": "streak3",
+              "rotation": 6.000000000000001,
+              "fill": "#85FF9B33",
+              "width": 420,
+              "height": 6,
+              "effect": {
+                "type": "blur",
+                "radius": 32
+              }
+            },
+            {
+              "type": "frame",
+              "id": "nraES",
+              "name": "leftCol",
+              "width": 560,
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "QxTy4",
+                  "name": "resultSearch",
+                  "width": "fill_container",
+                  "fill": "#F8FAFC",
+                  "cornerRadius": 22,
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#7CFF7C1F",
+                    "offset": {
+                      "x": 0,
+                      "y": 10
+                    },
+                    "blur": 34
+                  },
+                  "gap": 14,
+                  "padding": [
+                    16,
+                    18
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "8vOaE",
+                      "name": "resultSearchIconWrap",
+                      "width": 42,
+                      "height": 42,
+                      "fill": "#0F172A",
+                      "cornerRadius": 14,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "r5b58",
+                          "name": "resultSearchIcon",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "search",
+                          "iconFontFamily": "lucide",
+                          "fill": "#7CFF7C"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "BpzPN",
+                      "name": "resultSearchText",
+                      "fill": "#0F172A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "lion",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "w71gT",
+                  "name": "resultsMeta",
+                  "fill": "#8B95A7",
+                  "content": "About 12 results",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "WwhWp",
+                  "name": "resultsList",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "V1iGd",
+                      "name": "card1",
+                      "width": "fill_container",
+                      "fill": "#111827",
+                      "cornerRadius": 22,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#7CFF7C55"
+                      },
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": 18,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "orEHN",
+                          "name": "card1Tag",
+                          "fill": "#7CFF7C",
+                          "content": "Featured mammal",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.6
+                        },
+                        {
+                          "type": "text",
+                          "id": "92J7h",
+                          "name": "card1Title",
+                          "fill": "#F8FAFC",
+                          "content": "Lion",
+                          "fontFamily": "Inter",
+                          "fontSize": 28,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "rRY5l",
+                          "name": "card1Body",
+                          "fill": "#AAB3C5",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Large wild cat known for its social pride structure, powerful build, and iconic mane.",
+                          "lineHeight": 1.45,
+                          "fontFamily": "Inter",
+                          "fontSize": 15
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "16hsm",
+                      "name": "card2",
+                      "width": "fill_container",
+                      "fill": "#0F172A",
+                      "cornerRadius": 22,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#FFFFFF12"
+                      },
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": 18,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "iJu7x",
+                          "name": "card2Title",
+                          "fill": "#F8FAFC",
+                          "content": "Tiger",
+                          "fontFamily": "Inter",
+                          "fontSize": 24,
+                          "fontWeight": "650"
+                        },
+                        {
+                          "type": "text",
+                          "id": "iZUDU",
+                          "name": "card2Body",
+                          "fill": "#AAB3C5",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "A solitary big cat recognized by its striped coat, strength, and stealth in forest habitats.",
+                          "lineHeight": 1.45,
+                          "fontFamily": "Inter",
+                          "fontSize": 15
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "0LBd3",
+                      "name": "card3",
+                      "width": "fill_container",
+                      "fill": "#0F172A",
+                      "cornerRadius": 22,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#FFFFFF12"
+                      },
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": 18,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "R1RWT",
+                          "name": "card3Title",
+                          "fill": "#F8FAFC",
+                          "content": "Leopard",
+                          "fontFamily": "Inter",
+                          "fontSize": 24,
+                          "fontWeight": "650"
+                        },
+                        {
+                          "type": "text",
+                          "id": "9MLGw",
+                          "name": "card3Body",
+                          "fill": "#AAB3C5",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Agile and adaptable, the leopard is known for climbing, camouflage, and broad distribution.",
+                          "lineHeight": 1.45,
+                          "fontFamily": "Inter",
+                          "fontSize": 15
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xWcdf",
+              "name": "rightCol",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "orVjn",
+                  "name": "detailCard",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": [
+                    {
+                      "type": "gradient",
+                      "gradientType": "linear",
+                      "enabled": true,
+                      "rotation": 180,
+                      "size": {
+                        "height": 1
+                      },
+                      "colors": [
+                        {
+                          "color": "#101723",
+                          "position": 0
+                        },
+                        {
+                          "color": "#131C2A",
+                          "position": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "gradient",
+                      "gradientType": "radial",
+                      "enabled": true,
+                      "opacity": 0.15,
+                      "rotation": 0,
+                      "size": {
+                        "width": 0.35,
+                        "height": 0.3
+                      },
+                      "colors": [
+                        {
+                          "color": "#7CFF7C",
+                          "position": 0
+                        },
+                        {
+                          "color": "#7CFF7C00",
+                          "position": 1
+                        }
+                      ],
+                      "center": {
+                        "x": 0.85,
+                        "y": 0.08
+                      }
+                    }
+                  ],
+                  "cornerRadius": 26,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#FFFFFF14"
+                  },
+                  "layout": "vertical",
+                  "gap": 18,
+                  "padding": 22,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "IlFB6",
+                      "name": "detailImage",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "glencarrie",
+                        "link": "https://unsplash.com/@glencarrie",
+                        "author": "Glen Carrie"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 300,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1589652045525-4496b6099023?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzkyMjA1MTV8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 20
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Zi3SM",
+                      "name": "detailContent",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "layout": "vertical",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "fcpqT",
+                          "name": "detailHeader",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "nJmgB",
+                              "name": "detailTag",
+                              "fill": "#7CFF7C",
+                              "content": "Selected result",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "600",
+                              "letterSpacing": 0.7
+                            },
+                            {
+                              "type": "text",
+                              "id": "9EPo2",
+                              "name": "detailTitle",
+                              "fill": "#F8FAFC",
+                              "content": "Lion",
+                              "fontFamily": "Inter",
+                              "fontSize": 34,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "52qO7",
+                              "name": "detailBody",
+                              "fill": "#AAB3C5",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Lions are large social cats that live in prides and are often associated with open savannas across Africa. Their strong visual identity and cooperative behavior make them one of the most recognized animals in the world.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "Inter",
+                              "fontSize": 15
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "BYFZJ",
+                          "name": "metricsGrid",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "PGgXM",
+                              "name": "row1",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "IIqO2",
+                                  "name": "metric1",
+                                  "width": "fill_container",
+                                  "fill": "#FFFFFF08",
+                                  "cornerRadius": 18,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "#FFFFFF10"
+                                  },
+                                  "layout": "vertical",
+                                  "gap": 6,
+                                  "padding": 14,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "vPoVq",
+                                      "name": "metric1Label",
+                                      "fill": "#8B95A7",
+                                      "content": "Habitat",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0.5
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "PwEM7",
+                                      "name": "metric1Value",
+                                      "fill": "#F8FAFC",
+                                      "content": "Savanna",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 18,
+                                      "fontWeight": "650"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "ohgAt",
+                                  "name": "metric2",
+                                  "width": "fill_container",
+                                  "fill": "#FFFFFF08",
+                                  "cornerRadius": 18,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "#FFFFFF10"
+                                  },
+                                  "layout": "vertical",
+                                  "gap": 6,
+                                  "padding": 14,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "bpPAP",
+                                      "name": "metric2Label",
+                                      "fill": "#8B95A7",
+                                      "content": "Type",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0.5
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "1KRRS",
+                                      "name": "metric2Value",
+                                      "fill": "#F8FAFC",
+                                      "content": "Mammal",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 18,
+                                      "fontWeight": "650"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "9QPJv",
+                              "name": "row2",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "AMavE",
+                                  "name": "metric3",
+                                  "width": "fill_container",
+                                  "fill": "#FFFFFF08",
+                                  "cornerRadius": 18,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "#FFFFFF10"
+                                  },
+                                  "layout": "vertical",
+                                  "gap": 6,
+                                  "padding": 14,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "YCwXh",
+                                      "name": "metric3Label",
+                                      "fill": "#8B95A7",
+                                      "content": "Lifespan",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0.5
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "y8v9l",
+                                      "name": "metric3Value",
+                                      "fill": "#F8FAFC",
+                                      "content": "10-14 years",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 18,
+                                      "fontWeight": "650"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "EFTHK",
+                                  "name": "metric4",
+                                  "width": "fill_container",
+                                  "fill": "#FFFFFF08",
+                                  "cornerRadius": 18,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "#FFFFFF10"
+                                  },
+                                  "layout": "vertical",
+                                  "gap": 6,
+                                  "padding": 14,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "8f8Lr",
+                                      "name": "metric4Label",
+                                      "fill": "#8B95A7",
+                                      "content": "Diet",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "600",
+                                      "letterSpacing": 0.5
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "wxgoB",
+                                      "name": "metric4Value",
+                                      "fill": "#F8FAFC",
+                                      "content": "Carnivore",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 18,
+                                      "fontWeight": "650"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

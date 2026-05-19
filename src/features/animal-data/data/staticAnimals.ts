@@ -1,6 +1,95 @@
 import { IAnimal } from "../../../shared/types/animal";
 
-const staticAnimals: IAnimal[] = [
+type AnimalMetadata = Pick<IAnimal, "habitat" | "lifespan" | "diet" | "summaryTag">;
+
+const animalMetadataByType = {
+  dog: {
+    habitat: "Domestic homes, training fields, and open parks",
+    lifespan: "10-14 years",
+    diet: "Omnivore with protein-rich meals",
+    summaryTag: "Loyal working companion",
+  },
+  cat: {
+    habitat: "Homes, urban neighborhoods, and warm indoor spaces",
+    lifespan: "12-18 years",
+    diet: "Obligate carnivore",
+    summaryTag: "Independent indoor favorite",
+  },
+  bird: {
+    habitat: "Forests, coastlines, wetlands, and open skies",
+    lifespan: "15-30 years",
+    diet: "Seeds, fruit, insects, or small prey",
+    summaryTag: "High-flying visual icon",
+  },
+  horse: {
+    habitat: "Grasslands, ranches, and managed pastures",
+    lifespan: "25-30 years",
+    diet: "Herbivore with grasses and hay",
+    summaryTag: "Endurance-built grazer",
+  },
+  bear: {
+    habitat: "Forests, mountains, tundra, and river valleys",
+    lifespan: "20-30 years",
+    diet: "Omnivore with seasonal foraging",
+    summaryTag: "Powerful solitary forager",
+  },
+  fish: {
+    habitat: "Freshwater rivers, reefs, and aquariums",
+    lifespan: "5-15 years",
+    diet: "Algae, plankton, or small aquatic prey",
+    summaryTag: "Colorful aquatic resident",
+  },
+  rabbit: {
+    habitat: "Meadows, warrens, and sheltered brush",
+    lifespan: "8-12 years",
+    diet: "Herbivore with grasses and leafy plants",
+    summaryTag: "Quick-footed meadow dweller",
+  },
+  insect: {
+    habitat: "Gardens, fields, forests, and flowering areas",
+    lifespan: "6 weeks to 1 year",
+    diet: "Nectar, leaves, sap, or tiny insects",
+    summaryTag: "Small but ecosystem-critical",
+  },
+  cow: {
+    habitat: "Pastures, farms, and open grazing land",
+    lifespan: "15-20 years",
+    diet: "Herbivore with grasses and feed grains",
+    summaryTag: "Pasture-raised herd staple",
+  },
+  snake: {
+    habitat: "Grasslands, forests, deserts, and wetlands",
+    lifespan: "15-25 years",
+    diet: "Carnivore feeding on rodents, birds, or amphibians",
+    summaryTag: "Silent ambush predator",
+  },
+  lion: {
+    habitat: "Savannas, scrublands, and rocky grasslands",
+    lifespan: "10-18 years",
+    diet: "Carnivore hunting large mammals",
+    summaryTag: "Apex pride hunter",
+  },
+  cetacean: {
+    habitat: "Coastal seas, open oceans, and Arctic waters",
+    lifespan: "25-80 years",
+    diet: "Fish, squid, krill, or marine mammals",
+    summaryTag: "Highly social ocean mammal",
+  },
+  rodent: {
+    habitat: "Burrows, grasslands, forests, and domestic habitats",
+    lifespan: "2-8 years",
+    diet: "Seeds, roots, grasses, and fresh produce",
+    summaryTag: "Curious small mammal",
+  },
+} satisfies Record<string, AnimalMetadata>;
+
+type AnimalType = keyof typeof animalMetadataByType;
+
+type AnimalSeed = Omit<IAnimal, keyof AnimalMetadata | "type"> & {
+  type: AnimalType;
+};
+
+const animalSeeds: AnimalSeed[] = [
   {
     type: "dog",
     id: 1,
@@ -802,5 +891,10 @@ const staticAnimals: IAnimal[] = [
     image: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e",
   },
 ];
+
+const staticAnimals: IAnimal[] = animalSeeds.map((animal) => ({
+  ...animal,
+  ...animalMetadataByType[animal.type],
+}));
 
 export default staticAnimals;

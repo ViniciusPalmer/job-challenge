@@ -1,20 +1,11 @@
-import GoogleLogo from "../../assets/google_icon.png";
-import { SearchMenuBar } from "../../features/animal-search/components/SearchMenuBar";
-import { Footer } from "../../shared/components/Footer";
 import { SeoMetadata } from "../../shared/components/SeoMetadata";
-import { HomeHeader } from "./components/HomeHeader";
+import { SearchHero } from "./components/SearchHero";
 
 export function HomeRoute() {
   return (
-    <main className="w-screen h-screen flex flex-col items-center">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(124,255,124,0.18),_transparent_28%),linear-gradient(180deg,#06070b_0%,#0e1118_100%)]">
       <SeoMetadata title="Animal Search" description="Search for various animals by type or name" />
-      <HomeHeader />
-      <div className="w-[40vw] flex flex-col items-center justify-around fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:w-[80vw]">
-        <h1 className="sr-only">Animal Search Home</h1>
-        <img className="w-3/4 mb-6" src={GoogleLogo} alt="" />
-        <SearchMenuBar />
-      </div>
-      <Footer />
+      <SearchHero />
     </main>
   );
 }

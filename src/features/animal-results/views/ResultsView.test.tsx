@@ -1,19 +1,54 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { ResultsView } from "./ResultsView";
-import { IAnimal } from "../../../shared/types/animal";
 
-const animals: ReadonlyArray<Readonly<IAnimal>> = [
-  { id: 1, title: "Animal 1", type: "species", image: "1.png", description: "Animal 1 description", url: "https://animal-1.test" },
-  { id: 2, title: "Animal 2", type: "species", image: "2.png", description: "Animal 2 description", url: "https://animal-2.test" },
-  { id: 3, title: "Animal 3", type: "species", image: "3.png", description: "Animal 3 description", url: "https://animal-3.test" },
-  { id: 4, title: "Animal 4", type: "species", image: "4.png", description: "Animal 4 description", url: "https://animal-4.test" },
-  { id: 5, title: "Animal 5", type: "species", image: "5.png", description: "Animal 5 description", url: "https://animal-5.test" },
-  { id: 6, title: "Zebra 6", type: "species", image: "6.png", description: "Zebra 6 description", url: "https://animal-6.test" },
-  { id: 7, title: "Zebra 7", type: "species", image: "7.png", description: "Zebra 7 description", url: "https://animal-7.test" },
-  { id: 8, title: "Zebra 8", type: "species", image: "8.png", description: "Zebra 8 description", url: "https://animal-8.test" },
+function setViewportWidth(width: number) {
+  act(() => {
+    window.innerWidth = width;
+    window.dispatchEvent(new Event("resize"));
+  });
+}
+
+function createAnimal(id: number, title: string) {
+  return {
+    id,
+    title,
+    type: "species",
+    image: `${id}.png`,
+    description: `${title} description`,
+    url: `https://animal-${id}.test`,
+    habitat: `${title} habitat`,
+    lifespan: `${id + 5} years`,
+    diet: `${title} diet`,
+    summaryTag: `${title} summary`,
+  };
+}
+
+const animals = [
+  createAnimal(1, "Animal 1"),
+  createAnimal(2, "Animal 2"),
+  createAnimal(3, "Animal 3"),
+  createAnimal(4, "Animal 4"),
+  createAnimal(5, "Animal 5"),
+  createAnimal(6, "Zebra 6"),
+  createAnimal(7, "Zebra 7"),
+  createAnimal(8, "Zebra 8"),
 ];
 
 describe("ResultsView", () => {
+  afterEach(() => {
+    setViewportWidth(1024);
+  });
+
+  it("selects the first filtered result by default on desktop", () => {
+    render(<ResultsView animalsData={animals} searchInput="animal" />);
+
+    const detail = screen.getByLabelText("Animal 1 details");
+
+    expect(within(detail).getByRole("heading", { name: "Animal 1" })).toBeInTheDocument();
+    expect(within(detail).getByText("Animal 1 habitat")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Animal 1" })).not.toHaveAttribute("aria-pressed");
+  });
+
   it("resets the active pagination page when filtering changes the dataset", () => {
     const { rerender } = render(<ResultsView animalsData={animals} searchInput="species" />);
 
@@ -28,5 +63,57 @@ describe("ResultsView", () => {
     expect(screen.queryByRole("button", { name: "Animal 5" })).not.toBeInTheDocument();
     expect(screen.getByText("1").closest("li")).toHaveClass("bg-gray-100");
     expect(screen.getByText("2").closest("li")).not.toHaveClass("bg-gray-100");
+  });
+
+  it("selects the first item on the new page when pagination changes", () => {
+    render(<ResultsView animalsData={animals} searchInput="species" />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Animal 2" }));
+    fireEvent.click(screen.getByText("2"));
+
+    const detail = screen.getByLabelText("Animal 5 details");
+
+    expect(within(detail).getByRole("heading", { name: "Animal 5" })).toBeInTheDocument();
+    expect(within(detail).getByText("Animal 5 habitat")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Animal 5" })).not.toHaveAttribute("aria-pressed");
+    expect(screen.queryByRole("button", { name: "Animal 2" })).not.toBeInTheDocument();
+  });
+
+  it("shows rich detail metadata for the selected animal", () => {
+    render(<ResultsView animalsData={animals} searchInput="animal" />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Animal 2" }));
+
+    const detail = screen.getByLabelText("Animal 2 details");
+
+    expect(within(detail).getByRole("heading", { name: "Animal 2" })).toBeInTheDocument();
+    expect(within(detail).getByText("Animal 2 habitat")).toBeInTheDocument();
+    expect(within(detail).getByText("7 years")).toBeInTheDocument();
+    expect(within(detail).getByText("Animal 2 diet")).toBeInTheDocument();
+    expect(within(detail).getByText("Animal 2 summary")).toBeInTheDocument();
+    expect(within(detail).getByText("Type")).toBeInTheDocument();
+  });
+
+  it("expands and collapses inline mobile details from the same trigger", () => {
+    setViewportWidth(480);
+
+    render(<ResultsView animalsData={animals} searchInput="animal" />);
+
+    const animalButton = screen.getByRole("button", { name: "Animal 1" });
+
+    expect(animalButton).toHaveAttribute("aria-expanded", "false");
+    expect(animalButton).not.toHaveAttribute("aria-controls");
+    expect(screen.queryByLabelText("Animal 1 details")).not.toBeInTheDocument();
+
+    fireEvent.click(animalButton);
+
+    expect(animalButton).toHaveAttribute("aria-expanded", "true");
+    expect(animalButton).toHaveAttribute("aria-controls", "animal-details-1");
+    expect(screen.getByLabelText("Animal 1 details")).toBeInTheDocument();
+
+    fireEvent.click(animalButton);
+
+    expect(animalButton).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryByLabelText("Animal 1 details")).not.toBeInTheDocument();
   });
 });

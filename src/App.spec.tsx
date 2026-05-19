@@ -10,8 +10,9 @@ describe("App", () => {
 
     await waitForElementToBeRemoved(() => screen.getByText("Loading..."));
 
-    expect(screen.getByRole("heading", { name: /agile content/i })).toBeInTheDocument();
-    expect(screen.getByLabelText("Submit search")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Find animals instantly" })).toBeInTheDocument();
+    expect(screen.getByText("Minimal input. Instant discovery. Built for curious minds.")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Submit search" })).toBeInTheDocument();
   });
 
   it("renders the results route", async () => {
@@ -22,45 +23,40 @@ describe("App", () => {
     await waitForElementToBeRemoved(() => screen.getByText("Loading..."));
 
     expect(screen.getByRole("button", { name: /go to home/i })).toBeInTheDocument();
+    expect(screen.getByRole("textbox", { name: "Search" })).toBeInTheDocument();
     expect(screen.getByText(/Try looking for:/i)).toBeInTheDocument();
   });
 
-  it("submits search from home and navigates back home from results", async () => {
+  it("submits search from home and navigates to results", async () => {
     window.history.pushState({}, "", "/");
 
     render(<App />);
 
-    expect(await screen.findByRole("heading", { name: /agile content/i })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "Find animals instantly" })).toBeInTheDocument();
 
     fireEvent.change(screen.getByLabelText("Search"), { target: { value: "lion" } });
     fireEvent.click(screen.getByRole("button", { name: /submit search/i }));
 
-    expect(await screen.findByText("African Lion")).toBeInTheDocument();
-
-    fireEvent.click(screen.getByRole("button", { name: /go to home/i }));
-
-    expect(await screen.findByRole("heading", { name: /agile content/i })).toBeInTheDocument();
+    expect(await screen.findByLabelText("African Lion details")).toBeInTheDocument();
+    expect(screen.getByRole("textbox", { name: "Search" })).toHaveValue("lion");
   });
 
-  it("clears the selected result detail when the results filter changes", async () => {
+  it("updates the shown results when the search changes on the results route", async () => {
     window.history.pushState({}, "", "/");
 
     render(<App />);
 
-    expect(await screen.findByRole("heading", { name: /agile content/i })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "Find animals instantly" })).toBeInTheDocument();
 
     fireEvent.change(screen.getByLabelText("Search"), { target: { value: "lion" } });
     fireEvent.click(screen.getByRole("button", { name: /submit search/i }));
 
-    const selectedResultButton = await screen.findByRole("button", { name: "African Lion" });
+    expect(await screen.findByLabelText("African Lion details")).toBeInTheDocument();
 
-    fireEvent.click(selectedResultButton);
+    fireEvent.change(screen.getByRole("textbox", { name: "Search" }), { target: { value: "dog" } });
 
-    expect(await screen.findByRole("link", { name: "African Lion" })).toBeInTheDocument();
-
-    fireEvent.change(screen.getByLabelText("Search"), { target: { value: "dog" } });
-
-    expect(screen.queryByRole("link", { name: "African Lion" })).not.toBeInTheDocument();
+    expect(screen.queryByLabelText("African Lion details")).not.toBeInTheDocument();
     expect(await screen.findByRole("button", { name: "Golden Retriever" })).toBeInTheDocument();
+    expect(screen.getByLabelText("Golden Retriever details")).toBeInTheDocument();
   });
 });

@@ -9,6 +9,10 @@ const animals: IAnimal[] = Array.from({ length: 6 }, (_, index) => ({
   image: `image-${index + 1}.png`,
   description: `Description ${index + 1}`,
   url: `https://animal-${index + 1}.test`,
+  habitat: `Habitat ${index + 1}`,
+  lifespan: `${index + 10} years`,
+  diet: `Diet ${index + 1}`,
+  summaryTag: `Tag ${index + 1}`,
 }));
 
 describe("usePaginatedAnimals", () => {
