@@ -13,6 +13,7 @@ export function SearchMenuBar({ onSubmit, variant = "hero" }: SearchMenuBarProps
   const { searchInput, setSearchInput } = useContext(SearchInputContext);
 
   const isHero = variant === "hero";
+  const placeholder = isHero ? "Search an animal in English" : "Search an animal in English";
 
   const resetSearch = () => {
     setSearchInput("");
@@ -45,7 +46,8 @@ export function SearchMenuBar({ onSubmit, variant = "hero" }: SearchMenuBarProps
         </label>
         <input
           id="search-input"
-          className="w-full rounded-xl border-none bg-transparent px-1 py-2 text-base text-slate-500 outline-none focus-visible:ring-2 focus-visible:ring-lime-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          className="w-full rounded-xl border-none bg-transparent px-1 py-2 text-base text-slate-700 placeholder:text-slate-400 outline-none focus-visible:ring-2 focus-visible:ring-lime-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          placeholder={placeholder}
           type="text"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}

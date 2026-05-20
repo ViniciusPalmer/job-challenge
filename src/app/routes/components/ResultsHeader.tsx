@@ -11,7 +11,7 @@ export function ResultsHeader() {
   }
 
   return (
-    <header className="rounded-[28px] border border-white/10 bg-white/5 p-4 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur sm:p-5">
+    <header className="rounded-[32px] border border-white/10 bg-white/5 p-4 shadow-[0_24px_80px_rgba(2,6,23,0.45)] backdrop-blur sm:p-5">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <button
           type="button"
@@ -29,6 +29,7 @@ export function ResultsHeader() {
         </button>
         <div className="w-full max-w-3xl lg:flex-1 lg:max-w-[720px]">
           <SearchMenuBar variant="results" />
+          <p className="mt-3 pl-1 text-sm text-slate-300">Search an animal in English</p>
         </div>
       </div>
     </header>

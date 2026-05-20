@@ -11,7 +11,7 @@ export function SearchHero() {
 
   return (
     <section className="relative mx-auto flex min-h-screen w-full max-w-[1280px] items-center justify-center px-6 py-16">
-      <div className="w-full max-w-[700px] rounded-[28px] border border-white/10 bg-slate-950/80 px-8 py-16 text-center shadow-[0_30px_90px_rgba(0,0,0,0.4)] backdrop-blur">
+      <div className="w-full max-w-[720px] rounded-[32px] border border-white/10 bg-slate-950/80 px-8 py-16 text-center shadow-[0_30px_90px_rgba(0,0,0,0.4)] backdrop-blur sm:px-10">
         <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-slate-200">
           <span className="h-2.5 w-2.5 rounded-full bg-lime-300" />
           Animal Search

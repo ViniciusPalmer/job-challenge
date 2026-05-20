@@ -29,6 +29,7 @@ describe("SearchMenuBar", () => {
 
     expect(screen.queryByText("Try: lion, fox, dolphin")).not.toBeInTheDocument();
     expect(screen.queryByText("Press Enter")).not.toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Search an animal in English")).toBeInTheDocument();
   });
 
   it("updates and clears the search value", () => {
