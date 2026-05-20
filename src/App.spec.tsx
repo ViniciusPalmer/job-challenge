@@ -24,7 +24,7 @@ describe("App", () => {
 
     expect(screen.getByRole("button", { name: /go to home/i })).toBeInTheDocument();
     expect(screen.getByRole("textbox", { name: "Search" })).toBeInTheDocument();
-    expect(screen.getByText(/Try looking for:/i)).toBeInTheDocument();
+    expect(screen.getByText(/Try one of these animal types:/i)).toBeInTheDocument();
   });
 
   it("submits search from home and navigates to results", async () => {

@@ -19,6 +19,7 @@ export function ResultsView({ animalsData, searchInput }: ResultsViewProps) {
   const [currentPage, setCurrentPage] = useState(0);
   const { filteredAnimals, foundResults, suggestionList } = useFilteredAnimals(animalsData, searchInput);
   const { currentItems, pageCount, handlePageChange } = usePaginatedAnimals(filteredAnimals, 4);
+  const resultCountLabel = `About ${filteredAnimals.length} result${filteredAnimals.length === 1 ? "" : "s"}`;
 
   useEffect(() => {
     function updateViewport() {
@@ -68,11 +69,12 @@ export function ResultsView({ animalsData, searchInput }: ResultsViewProps) {
   }
 
   return (
-    <>
-      <div className="flex flex-row items-start w-screen h-full p-6 cursor-pointer overflow-auto overflow-x-hidden">
+    <div className="flex h-full flex-col p-5 sm:p-6 lg:p-8">
+      <div className="flex flex-1 flex-col gap-6 overflow-hidden lg:flex-row lg:gap-8">
         {isDesktop ? (
           <>
-            <section className="mr-12 flex w-full max-w-3xl flex-col items-start">
+            <section className="flex w-full max-w-3xl flex-col items-start">
+              <p className="mb-5 text-sm font-medium text-slate-300">{resultCountLabel}</p>
               {currentItems.map((animal) => (
                 <ResultCard
                   key={animal.id}
@@ -81,6 +83,24 @@ export function ResultsView({ animalsData, searchInput }: ResultsViewProps) {
                   onSelect={() => setSelectedCard(animal)}
                 />
               ))}
+              {pageCount > 1 ? (
+                <ReactPaginate
+                  breakLabel="..."
+                  forcePage={currentPage}
+                  nextLabel=">"
+                  onPageChange={(event) => onPageChange(event.selected)}
+                  pageRangeDisplayed={5}
+                  pageCount={pageCount}
+                  previousLabel="<"
+                  renderOnZeroPageCount={null}
+                  className="mt-2 flex flex-wrap items-center gap-2 text-sm text-slate-200"
+                  pageClassName="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-900/70 transition hover:border-lime-300/60 hover:text-lime-200"
+                  activeClassName="border-lime-300 bg-lime-300/10 font-semibold text-lime-200"
+                  previousClassName="flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-900/70 px-3 transition hover:border-lime-300/60 hover:text-lime-200"
+                  nextClassName="flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-900/70 px-3 transition hover:border-lime-300/60 hover:text-lime-200"
+                  disabledClassName="opacity-40"
+                />
+              ) : null}
             </section>
             <section className="w-full max-w-[32rem]">
               {selectedCard && <ResultContent animal={selectedCard} />}
@@ -88,6 +108,7 @@ export function ResultsView({ animalsData, searchInput }: ResultsViewProps) {
           </>
         ) : (
           <section className="flex w-full flex-col items-start">
+            <p className="mb-5 text-sm font-medium text-slate-300">{resultCountLabel}</p>
             {currentItems.map((animal) => (
               <ResultContentMobile
                 key={animal.id}
@@ -104,22 +125,27 @@ export function ResultsView({ animalsData, searchInput }: ResultsViewProps) {
                 }}
               />
             ))}
+            {pageCount > 1 ? (
+              <ReactPaginate
+                breakLabel="..."
+                forcePage={currentPage}
+                nextLabel=">"
+                onPageChange={(event) => onPageChange(event.selected)}
+                pageRangeDisplayed={5}
+                pageCount={pageCount}
+                previousLabel="<"
+                renderOnZeroPageCount={null}
+                className="mt-2 flex flex-wrap items-center gap-2 text-sm text-slate-200"
+                pageClassName="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-900/70 transition hover:border-lime-300/60 hover:text-lime-200"
+                activeClassName="border-lime-300 bg-lime-300/10 font-semibold text-lime-200"
+                previousClassName="flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-900/70 px-3 transition hover:border-lime-300/60 hover:text-lime-200"
+                nextClassName="flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-900/70 px-3 transition hover:border-lime-300/60 hover:text-lime-200"
+                disabledClassName="opacity-40"
+              />
+            ) : null}
           </section>
         )}
       </div>
-      <ReactPaginate
-        breakLabel="..."
-        forcePage={currentPage}
-        nextLabel=">"
-        onPageChange={(event) => onPageChange(event.selected)}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="<"
-        renderOnZeroPageCount={null}
-        className="flex flex-nowrap text-lg cursor-pointer mt-4"
-        pageClassName="w-[30px] h-[30px] flex items-center justify-center border border-gray-100 m-0 mx-2 hover:bg-gray-100 transition-all duration-1000"
-        activeClassName="bg-gray-100 border border-gray-100 font-bold"
-      />
-    </>
+    </div>
   );
 }

@@ -42,8 +42,11 @@ describe("ResultsView", () => {
   it("selects the first filtered result by default on desktop", () => {
     render(<ResultsView animalsData={animals} searchInput="animal" />);
 
+    expect(screen.getByText("About 5 results")).toBeInTheDocument();
+
     const detail = screen.getByLabelText("Animal 1 details");
 
+    expect(within(detail).getByText("Selected result")).toBeInTheDocument();
     expect(within(detail).getByRole("heading", { name: "Animal 1" })).toBeInTheDocument();
     expect(within(detail).getByText("Animal 1 habitat")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Animal 1" })).not.toHaveAttribute("aria-pressed");
@@ -55,14 +58,14 @@ describe("ResultsView", () => {
     fireEvent.click(screen.getByText("2"));
 
     expect(screen.getByRole("button", { name: "Animal 5" })).toBeInTheDocument();
-    expect(screen.getByText("2").closest("li")).toHaveClass("bg-gray-100");
+    expect(screen.getByRole("button", { name: "Page 2 is your current page" })).toBeInTheDocument();
 
     rerender(<ResultsView animalsData={animals} searchInput="animal" />);
 
     expect(screen.getByRole("button", { name: "Animal 1" })).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Animal 5" })).not.toBeInTheDocument();
-    expect(screen.getByText("1").closest("li")).toHaveClass("bg-gray-100");
-    expect(screen.getByText("2").closest("li")).not.toHaveClass("bg-gray-100");
+    expect(screen.getByRole("button", { name: "Page 1 is your current page" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Page 2" })).toBeInTheDocument();
   });
 
   it("selects the first item on the new page when pagination changes", () => {
@@ -92,6 +95,15 @@ describe("ResultsView", () => {
     expect(within(detail).getByText("Animal 2 diet")).toBeInTheDocument();
     expect(within(detail).getByText("Animal 2 summary")).toBeInTheDocument();
     expect(within(detail).getByText("Type")).toBeInTheDocument();
+    expect(within(detail).getByText("Selected result")).toBeInTheDocument();
+  });
+
+  it("shows local-search empty state guidance when there are no matches", () => {
+    render(<ResultsView animalsData={animals} searchInput="penguin" />);
+
+    expect(screen.getByText("No matches found for penguin.")).toBeInTheDocument();
+    expect(screen.getByText("Try one of these animal types:")).toBeInTheDocument();
+    expect(screen.queryByText(/API is not working/i)).not.toBeInTheDocument();
   });
 
   it("expands and collapses inline mobile details from the same trigger", () => {
