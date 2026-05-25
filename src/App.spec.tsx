@@ -8,7 +8,9 @@ describe("App", () => {
 
     render(<App />);
 
-    await waitForElementToBeRemoved(() => screen.getByText("Loading..."));
+    expect(screen.getByRole("status", { name: /loading page content/i })).toBeInTheDocument();
+
+    await waitForElementToBeRemoved(() => screen.getByRole("status", { name: /loading page content/i }));
 
     expect(screen.getByRole("heading", { name: "Find animals instantly" })).toBeInTheDocument();
     expect(screen.getByText("Minimal input. Instant discovery. Built for curious minds.")).toBeInTheDocument();
@@ -20,7 +22,9 @@ describe("App", () => {
 
     render(<App />);
 
-    await waitForElementToBeRemoved(() => screen.getByText("Loading..."));
+    expect(screen.getByRole("status", { name: /loading page content/i })).toBeInTheDocument();
+
+    await waitForElementToBeRemoved(() => screen.getByRole("status", { name: /loading page content/i }));
 
     expect(screen.getByRole("button", { name: /go to home/i })).toBeInTheDocument();
     expect(screen.getByRole("textbox", { name: "Search" })).toBeInTheDocument();

@@ -9,9 +9,15 @@
     box-sizing: border-box;
   }
 
-  :focus {
-    outline: 0;
-    box-shadow: 0 0 0 1px #dfe1e5;
+  :focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid #7cff7c;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px #0f172a;
   }
 
   body {
@@ -22,6 +28,6 @@
   }
 
   body, input, textarea, button {
-    font: 400 1rem arial, sans-serif;
+    font: 400 1rem Inter, Arial, sans-serif;
   }
 }
