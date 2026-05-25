@@ -10,9 +10,9 @@ export function SearchHero() {
   }
 
   return (
-    <section className="relative mx-auto flex min-h-screen w-full max-w-[1280px] items-center justify-center px-6 py-16">
-      <div className="w-full max-w-[720px] rounded-[32px] border border-white/10 bg-slate-950 px-8 py-16 text-center shadow-[0_24px_60px_rgba(0,0,0,0.32)] sm:px-10">
-        <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-white/10 bg-slate-900 px-4 py-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-slate-200">
+    <section className="relative mx-auto flex min-h-screen w-full max-w-[1360px] items-center justify-center px-4 py-5 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+      <div className="w-full max-w-[760px] rounded-[36px] border border-white/10 bg-slate-900 px-6 py-12 text-center shadow-[0_18px_56px_rgba(2,6,23,0.36)] sm:px-10 sm:py-14">
+        <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-white/10 bg-slate-950 px-4 py-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-slate-200">
           <span className="h-2.5 w-2.5 rounded-full bg-lime-300" />
           Animal Search
         </div>

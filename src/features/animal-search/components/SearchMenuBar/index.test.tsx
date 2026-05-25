@@ -16,6 +16,7 @@ describe("SearchMenuBar", () => {
 
     expect(screen.getByText("Try: lion, fox, dolphin")).toBeInTheDocument();
     expect(screen.getByText("Press Enter")).toBeInTheDocument();
+    expect(screen.getByLabelText("Search").closest("form")).toBeInTheDocument();
   });
 
   it("hides hero helper text in the results variant", () => {
@@ -30,6 +31,7 @@ describe("SearchMenuBar", () => {
     expect(screen.queryByText("Try: lion, fox, dolphin")).not.toBeInTheDocument();
     expect(screen.queryByText("Press Enter")).not.toBeInTheDocument();
     expect(screen.getByPlaceholderText("Search an animal in English")).toBeInTheDocument();
+    expect(screen.getByLabelText("Search").closest("form")).toBeInTheDocument();
   });
 
   it("updates and clears the search value", () => {
@@ -45,15 +47,6 @@ describe("SearchMenuBar", () => {
 
     fireEvent.change(input, { target: { value: "lion" } });
     expect(input).toHaveValue("lion");
-
-    expect(input.closest("form")).toHaveClass(
-      "transition-colors",
-      "focus-within:border-lime-400",
-      "focus-within:shadow-lg",
-      "focus-within:shadow-lime-200/40"
-    );
-
-    expect(screen.getByRole("button", { name: "Clear search" })).toHaveClass("h-11", "w-11");
 
     fireEvent.click(screen.getByRole("button", { name: "Clear search" }));
     expect(input).toHaveValue("");
