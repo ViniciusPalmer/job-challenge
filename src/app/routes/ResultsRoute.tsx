@@ -8,7 +8,7 @@ import { ResultsShell } from "./components/ResultsShell";
 
 export function ResultsRoute() {
   const { animalsData } = useContext(AnimalsDataContext);
-  const { searchInput } = useContext(SearchInputContext);
+  const { searchInput, setSearchInput } = useContext(SearchInputContext);
 
   return (
     <>
@@ -19,7 +19,11 @@ export function ResultsRoute() {
       <ResultsShell>
         <ResultsHeader />
         <section className="mt-6 flex flex-1 overflow-hidden rounded-[36px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.96)_0%,rgba(2,6,23,0.92)_100%)] shadow-[0_24px_80px_rgba(2,6,23,0.5)] backdrop-blur">
-          <ResultsView animalsData={animalsData} searchInput={searchInput} />
+          <ResultsView
+            animalsData={animalsData}
+            searchInput={searchInput}
+            onSuggestionSelect={setSearchInput}
+          />
         </section>
       </ResultsShell>
     </>

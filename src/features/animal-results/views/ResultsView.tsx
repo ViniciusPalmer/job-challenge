@@ -11,9 +11,10 @@ import { usePaginatedAnimals } from "../hooks/usePaginatedAnimals";
 interface ResultsViewProps {
   animalsData: ReadonlyArray<Readonly<IAnimal>>;
   searchInput: string;
+  onSuggestionSelect?: (value: string) => void;
 }
 
-export function ResultsView({ animalsData, searchInput }: ResultsViewProps) {
+export function ResultsView({ animalsData, searchInput, onSuggestionSelect }: ResultsViewProps) {
   const [selectedCard, setSelectedCard] = useState<Readonly<IAnimal> | null>(null);
   const [isDesktop, setIsDesktop] = useState(() => window.innerWidth > 800);
   const [currentPage, setCurrentPage] = useState(0);
@@ -65,7 +66,13 @@ export function ResultsView({ animalsData, searchInput }: ResultsViewProps) {
   }
 
   if (!foundResults) {
-    return <NoResultsFound searchText={searchInput} suggestionList={suggestionList} />;
+    return (
+      <NoResultsFound
+        searchText={searchInput}
+        suggestionList={suggestionList}
+        onSuggestionSelect={onSuggestionSelect}
+      />
+    );
   }
 
   return (

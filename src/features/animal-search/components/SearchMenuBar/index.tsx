@@ -28,8 +28,8 @@ export function SearchMenuBar({ onSubmit, variant = "hero" }: SearchMenuBarProps
     <form
       className={
         isHero
-          ? "w-full max-w-[560px] rounded-[1.5rem] bg-white p-4 shadow-[0_16px_50px_rgba(124,255,124,0.14)]"
-          : "w-full rounded-[1.375rem] bg-white px-4 py-3 shadow-[0_10px_34px_rgba(124,255,124,0.12)]"
+          ? "w-full max-w-[560px] rounded-[1.5rem] border border-slate-200 bg-white p-4 shadow-lg shadow-slate-950/10 transition-colors focus-within:border-lime-400 focus-within:shadow-lg focus-within:shadow-lime-200/40"
+          : "w-full rounded-[1.375rem] border border-slate-200 bg-white px-4 py-3 shadow-sm shadow-slate-950/10 transition-colors focus-within:border-lime-400 focus-within:shadow-lg focus-within:shadow-lime-200/40"
       }
       onSubmit={submitSearchInput}
     >
@@ -55,7 +55,7 @@ export function SearchMenuBar({ onSubmit, variant = "hero" }: SearchMenuBarProps
         <button
           type="button"
           aria-label="Clear search"
-          className="text-slate-400 transition hover:text-slate-700"
+          className="flex h-11 w-11 items-center justify-center rounded-2xl text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400 focus-visible:ring-offset-2"
           onClick={resetSearch}
         >
           <img className="h-4 w-4" src={CloseIcon} alt="" />

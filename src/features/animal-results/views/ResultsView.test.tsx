@@ -98,12 +98,25 @@ describe("ResultsView", () => {
     expect(within(detail).getByText("Selected result")).toBeInTheDocument();
   });
 
-  it("shows local-search empty state guidance when there are no matches", () => {
-    render(<ResultsView animalsData={animals} searchInput="penguin" />);
+  it("emits suggestion recovery actions when there are no matches", () => {
+    const handleSuggestionSelect = jest.fn();
+
+    render(
+      <ResultsView
+        animalsData={animals}
+        searchInput="penguin"
+        onSuggestionSelect={handleSuggestionSelect}
+      />
+    );
 
     expect(screen.getByText("No matches found for penguin.")).toBeInTheDocument();
     expect(screen.getByText("Try one of these animal types:")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "species" })).toBeInTheDocument();
     expect(screen.queryByText(/API is not working/i)).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "species" }));
+
+    expect(handleSuggestionSelect).toHaveBeenCalledWith("species");
   });
 
   it("expands and collapses inline mobile details from the same trigger", () => {

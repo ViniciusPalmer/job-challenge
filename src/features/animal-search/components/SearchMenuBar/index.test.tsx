@@ -46,6 +46,15 @@ describe("SearchMenuBar", () => {
     fireEvent.change(input, { target: { value: "lion" } });
     expect(input).toHaveValue("lion");
 
+    expect(input.closest("form")).toHaveClass(
+      "transition-colors",
+      "focus-within:border-lime-400",
+      "focus-within:shadow-lg",
+      "focus-within:shadow-lime-200/40"
+    );
+
+    expect(screen.getByRole("button", { name: "Clear search" })).toHaveClass("h-11", "w-11");
+
     fireEvent.click(screen.getByRole("button", { name: "Clear search" }));
     expect(input).toHaveValue("");
   });
