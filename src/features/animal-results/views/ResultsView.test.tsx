@@ -151,4 +151,16 @@ describe("ResultsView", () => {
     expect(animalButton).toHaveAttribute("aria-expanded", "false");
     expect(screen.queryByLabelText("Animal 1 details")).not.toBeInTheDocument();
   });
+
+  it("keeps the mobile result markup through the tablet band below the lg layout breakpoint", () => {
+    setViewportWidth(900);
+
+    render(<ResultsView animalsData={animals} searchInput="animal" />);
+
+    const animalButton = screen.getByRole("button", { name: "Animal 1" });
+
+    expect(animalButton).toHaveAttribute("aria-expanded", "false");
+    expect(animalButton).not.toHaveAttribute("aria-pressed");
+    expect(screen.queryByLabelText("Animal 1 details")).not.toBeInTheDocument();
+  });
 });

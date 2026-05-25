@@ -8,6 +8,8 @@ import { ResultContentMobile } from "../components/ResultContentMobile";
 import { useFilteredAnimals } from "../hooks/useFilteredAnimals";
 import { usePaginatedAnimals } from "../hooks/usePaginatedAnimals";
 
+const LG_BREAKPOINT = 1024;
+
 interface ResultsViewProps {
   animalsData: ReadonlyArray<Readonly<IAnimal>>;
   searchInput: string;
@@ -16,7 +18,7 @@ interface ResultsViewProps {
 
 export function ResultsView({ animalsData, searchInput, onSuggestionSelect }: ResultsViewProps) {
   const [selectedCard, setSelectedCard] = useState<Readonly<IAnimal> | null>(null);
-  const [isDesktop, setIsDesktop] = useState(() => window.innerWidth > 800);
+  const [isDesktop, setIsDesktop] = useState(() => window.innerWidth >= LG_BREAKPOINT);
   const [currentPage, setCurrentPage] = useState(0);
   const { filteredAnimals, foundResults, suggestionList } = useFilteredAnimals(animalsData, searchInput);
   const { currentItems, pageCount, handlePageChange } = usePaginatedAnimals(filteredAnimals, 4);
@@ -25,7 +27,7 @@ export function ResultsView({ animalsData, searchInput, onSuggestionSelect }: Re
 
   useEffect(() => {
     function updateViewport() {
-      setIsDesktop(window.innerWidth > 800);
+      setIsDesktop(window.innerWidth >= LG_BREAKPOINT);
     }
 
     window.addEventListener("resize", updateViewport);
