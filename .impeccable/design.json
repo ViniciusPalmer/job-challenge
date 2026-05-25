@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-25T00:00:00.000Z",
+  "title": "Design System: Animal Search",
+  "extensions": {
+    "colorMeta": {
+      "bioluminescent-lime": {
+        "role": "primary",
+        "displayName": "Bioluminescent Lime",
+        "canonical": "oklch(91% 0.19 142)",
+        "tonalRamp": ["#0F2411", "#173918", "#205120", "#2F6A2F", "#4D934B", "#7CFF7C", "#B3FFB4", "#E9FFEA"]
+      },
+      "ambient-blue": {
+        "role": "secondary",
+        "displayName": "Ambient Blue",
+        "canonical": "oklch(69% 0.15 246)",
+        "tonalRamp": ["#0E2035", "#15304C", "#1C4164", "#27547D", "#356E9C", "#4AA3FF", "#8CC7FF", "#DCEEFF"]
+      },
+      "nocturne-ink": {
+        "role": "neutral",
+        "displayName": "Nocturne Ink",
+        "canonical": "oklch(14% 0.01 255)",
+        "tonalRamp": ["#06070B", "#0C0E14", "#131722", "#1B2030", "#2A3143", "#414B60", "#7E8798", "#E7EBF0"]
+      },
+      "paper-mist": {
+        "role": "neutral",
+        "displayName": "Paper Mist",
+        "canonical": "oklch(98% 0.01 250)",
+        "tonalRamp": ["#1A1E26", "#2D3340", "#474F61", "#667085", "#8B95A7", "#AAB3C5", "#D7DEE8", "#F8FAFC"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Selected result titles and major panel headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Result card titles and strong section anchors."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default reading text for descriptions and summaries."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Compact metadata, tags, and UI microcopy."
+      }
+    },
+    "shadows": [
+      {
+        "name": "canvas-lift",
+        "value": "0 30px 90px rgba(0,0,0,0.40)",
+        "purpose": "Major screen shells detached from the page canvas."
+      },
+      {
+        "name": "search-glow",
+        "value": "0 16px 50px rgba(124,255,124,0.13)",
+        "purpose": "Bright search surfaces and active discovery controls."
+      },
+      {
+        "name": "ambient-hover",
+        "value": "0 10px 34px rgba(124,255,124,0.12)",
+        "purpose": "Secondary raised controls and active search rows."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-atlas",
+        "value": "cubic-bezier(0.25, 1, 0.5, 1)",
+        "purpose": "Default easing for state transitions and hover emphasis."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Search Trigger",
+      "kind": "button",
+      "refersTo": "search-button",
+      "description": "Icon-first action key used to submit search from the bright input shell.",
+      "html": "<button class=\"ds-search-trigger\" type=\"button\" aria-label=\"Search\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"></circle><path d=\"M20 20l-4.2-4.2\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button>",
+      "css": ".ds-search-trigger { display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; border:0; border-radius:18px; background:#0F172A; color:#7CFF7C; box-shadow:0 16px 50px rgba(124,255,124,0.13); transition:transform 180ms cubic-bezier(0.25,1,0.5,1), filter 180ms cubic-bezier(0.25,1,0.5,1); cursor:pointer; } .ds-search-trigger svg { width:20px; height:20px; } .ds-search-trigger:hover { transform:translateY(-1px); filter:brightness(1.06); } .ds-search-trigger:focus-visible { outline:2px solid #7CFF7C; outline-offset:3px; }"
+    },
+    {
+      "name": "Search Shell",
+      "kind": "input",
+      "refersTo": "search-shell",
+      "description": "Primary study-facing search field, bright and approachable inside the dark canvas.",
+      "html": "<label class=\"ds-search-shell\"><span class=\"ds-search-shell__icon\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"></circle><path d=\"M20 20l-4.2-4.2\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></span><input class=\"ds-search-shell__input\" value=\"Search an animal in English\" aria-label=\"Search an animal in English\"></label>",
+      "css": ".ds-search-shell { display:flex; align-items:center; gap:16px; padding:18px; border-radius:24px; background:#F8FAFC; box-shadow:0 16px 50px rgba(124,255,124,0.13); color:#0F172A; } .ds-search-shell__icon { display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:16px; background:#10141D; color:#7CFF7C; flex:0 0 auto; } .ds-search-shell__icon svg { width:20px; height:20px; } .ds-search-shell__input { border:0; background:transparent; color:#0F172A; font:600 18px/1.2 Inter, Arial, sans-serif; width:100%; outline:none; } .ds-search-shell__input::placeholder { color:#64748B; } .ds-search-shell:focus-within { outline:2px solid #7CFF7C; outline-offset:4px; }"
+    },
+    {
+      "name": "Status Pill",
+      "kind": "chip",
+      "refersTo": "status-pill",
+      "description": "Compact context chip for prompts like Press Enter or lightweight metadata.",
+      "html": "<span class=\"ds-status-pill\">Press Enter</span>",
+      "css": ".ds-status-pill { display:inline-flex; align-items:center; justify-content:center; padding:10px 14px; border-radius:999px; background:#10141D; color:#F8FAFC; font:600 13px/1.1 Inter, Arial, sans-serif; letter-spacing:0.01em; }"
+    },
+    {
+      "name": "Featured Result Card",
+      "kind": "card",
+      "refersTo": "result-card-featured",
+      "description": "Selected or spotlighted result card with accent-tag emphasis.",
+      "html": "<article class=\"ds-result-card ds-result-card--featured\"><div class=\"ds-result-card__tag\">Featured mammal</div><h3 class=\"ds-result-card__title\">Lion</h3><p class=\"ds-result-card__body\">Large wild cat known for its social pride structure, powerful build, and iconic mane.</p></article>",
+      "css": ".ds-result-card { display:flex; flex-direction:column; gap:10px; padding:18px; border-radius:22px; border:1px solid rgba(255,255,255,0.07); } .ds-result-card--featured { background:#111827; border-color:rgba(124,255,124,0.33); box-shadow:0 20px 50px rgba(2,6,23,0.40); } .ds-result-card__tag { color:#7CFF7C; font:600 12px/1.2 Inter, Arial, sans-serif; letter-spacing:0.06em; } .ds-result-card__title { margin:0; color:#F8FAFC; font:700 28px/1.15 Inter, Arial, sans-serif; } .ds-result-card__body { margin:0; color:#AAB3C5; font:400 15px/1.45 Inter, Arial, sans-serif; }"
+    },
+    {
+      "name": "Default Result Card",
+      "kind": "card",
+      "refersTo": "result-card-default",
+      "description": "Standard stacked result preview for scrollable search results.",
+      "html": "<article class=\"ds-result-card ds-result-card--default\"><h3 class=\"ds-result-card__title ds-result-card__title--sm\">Tiger</h3><p class=\"ds-result-card__body\">A solitary big cat recognized by its striped coat, strength, and stealth in forest habitats.</p></article>",
+      "css": ".ds-result-card--default { background:#0F172A; border-color:rgba(255,255,255,0.07); transition:border-color 180ms cubic-bezier(0.25,1,0.5,1), transform 180ms cubic-bezier(0.25,1,0.5,1); } .ds-result-card--default:hover { border-color:rgba(124,255,124,0.26); transform:translateY(-1px); } .ds-result-card__title--sm { font-size:24px; font-weight:650; }"
+    },
+    {
+      "name": "Detail Card",
+      "kind": "custom",
+      "refersTo": "detail-card",
+      "description": "Rich selected-animal panel with image, title, body, and digestible metrics.",
+      "html": "<section class=\"ds-detail-card\"><div class=\"ds-detail-card__image\"></div><div class=\"ds-detail-card__tag\">Selected result</div><h2 class=\"ds-detail-card__title\">Lion</h2><p class=\"ds-detail-card__body\">Lions are large social cats that live in prides and are often associated with open savannas across Africa.</p><div class=\"ds-detail-card__grid\"><div class=\"ds-detail-card__metric\"><span class=\"ds-detail-card__label\">Habitat</span><strong>Savannah</strong></div><div class=\"ds-detail-card__metric\"><span class=\"ds-detail-card__label\">Diet</span><strong>Carnivore</strong></div></div></section>",
+      "css": ".ds-detail-card { display:flex; flex-direction:column; gap:16px; padding:22px; border-radius:26px; border:1px solid rgba(255,255,255,0.08); background:linear-gradient(180deg,#101723 0%,#131C2A 100%); color:#F8FAFC; box-shadow:0 30px 90px rgba(0,0,0,0.40); } .ds-detail-card__image { min-height:220px; border-radius:20px; background:linear-gradient(135deg, rgba(124,255,124,0.18), rgba(124,255,124,0) 45%), url('https://images.unsplash.com/photo-1589652045525-4496b6099023?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080') center/cover; } .ds-detail-card__tag { color:#7CFF7C; font:600 12px/1.2 Inter, Arial, sans-serif; letter-spacing:0.06em; } .ds-detail-card__title { margin:0; font:700 34px/1.15 Inter, Arial, sans-serif; } .ds-detail-card__body { margin:0; color:#AAB3C5; font:400 15px/1.5 Inter, Arial, sans-serif; } .ds-detail-card__grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; } .ds-detail-card__metric { display:flex; flex-direction:column; gap:6px; padding:14px; border-radius:18px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); } .ds-detail-card__label { color:#8B95A7; font:600 12px/1.2 Inter, Arial, sans-serif; letter-spacing:0.04em; } .ds-detail-card strong { font:600 14px/1.2 Inter, Arial, sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Quiet Atlas",
+    "overview": "This system frames animal search as guided discovery after dark: focused enough for homework, alive enough to reward curiosity. The surface is cinematic but controlled, built from deep ink fields, pale reading surfaces, and a single alert accent that behaves like a scientific signal rather than decoration.\n\nThe mood is playful but disciplined. Rounded forms, glow-led depth, and compact content blocks keep the experience approachable for high school students, while the typography and restrained palette keep it credible. The interface must never drift into either of the project's anti-references: generic school portal dashboards, especially flat administrative layouts that feel bureaucratic or dated, or dense encyclopedia-style experiences that overwhelm students with long text walls before they can orient themselves.",
+    "keyCharacteristics": [
+      "Dark-field canvas with bright reading islands.",
+      "One living accent, used as signal, not wallpaper.",
+      "Rounded \"soft instruments\" for search and selection.",
+      "Short, digestible content blocks over long explanatory slabs.",
+      "Ambient depth through glow and tonal contrast, not hard stacking."
+    ],
+    "rules": [
+      {
+        "name": "Signal Scarcity Rule",
+        "body": "Bioluminescent Lime is powerful because it is rare. Keep it to actions, selection, tiny tags, and glow sources. If a screen starts reading green from across the room, it is already wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "Digestibility Rule",
+        "body": "Students should never meet an intimidating wall of copy first. Titles arrive fast, descriptions stay brief, and metadata gets chunked into small readable units.",
+        "section": "typography"
+      },
+      {
+        "name": "Atmospheric Depth Rule",
+        "body": "Shadows must feel wide, soft, and quiet. If a panel looks like a physical card dropped onto a desk, the blur is too small or the opacity is too high.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep Bioluminescent Lime (#7CFF7C) limited to signals, tags, search affordances, and glow sources.",
+      "Do use bright search shells (#F8FAFC) as reading and interaction islands inside the darker canvas.",
+      "Do keep containers rounded within the established range (18px to 28px) so the interface feels calm and approachable.",
+      "Do break information into short cards, compact metrics, and readable paragraphs instead of continuous text blocks.",
+      "Do preserve strong contrast between foreground text (#F8FAFC, #0F172A) and its immediate surface."
+    ],
+    "donts": [
+      "Don't recreate generic school portal dashboards, especially flat administrative layouts that feel bureaucratic or dated.",
+      "Don't drift into dense encyclopedia-style experiences that overwhelm students with long text walls before they can orient themselves.",
+      "Don't spread the lime accent across large surfaces or repeated decorative borders.",
+      "Don't replace the ambient glow model with harsh, small-radius shadows or rigid card stacks.",
+      "Don't let any search, result, or detail region read like a generic productivity SaaS template."
+    ]
+  }
+}
