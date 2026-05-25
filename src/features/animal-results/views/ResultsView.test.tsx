@@ -102,6 +102,8 @@ describe("ResultsView", () => {
     expect(within(detail).getByText("Animal 2 summary")).toBeInTheDocument();
     expect(within(detail).getByText("Type")).toBeInTheDocument();
     expect(within(detail).getByText("Selected result")).toBeInTheDocument();
+    expect(within(detail).getByRole("img", { name: "Animal 2" })).toHaveAttribute("loading", "lazy");
+    expect(within(detail).getByRole("img", { name: "Animal 2" })).toHaveAttribute("decoding", "async");
     expect(activeButton).toHaveAttribute("aria-pressed", "true");
     expect(activeButton).toHaveAttribute("aria-controls", detail.id);
   });

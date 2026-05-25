@@ -48,7 +48,7 @@ function ResultsRouteWithSearchState({ initialSearchInput }: { initialSearchInpu
 
 describe("ResultsRoute", () => {
   it("renders the redesigned results shell with search and result content", () => {
-    render(
+    const { container } = render(
       <MemoryRouter initialEntries={["/results"]}>
         <SearchInputContext.Provider
           value={{ searchInput: "snow", setSearchInput: jest.fn() }}
@@ -69,6 +69,7 @@ describe("ResultsRoute", () => {
     expect(screen.getByRole("status")).toHaveTextContent("About 1 result");
     expect(within(details).getByRole("heading", { name: "Snow Leopard" })).toBeInTheDocument();
     expect(within(details).getByText("Mountain ranges")).toBeInTheDocument();
+    expect(container.querySelector('[class*="backdrop-blur"]')).toBeNull();
     expect(activeButton).toHaveAttribute("aria-pressed", "true");
     expect(activeButton).toHaveAttribute("aria-controls", details.id);
   });

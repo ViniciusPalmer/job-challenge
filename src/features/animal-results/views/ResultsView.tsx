@@ -78,10 +78,10 @@ export function ResultsView({ animalsData, searchInput, onSuggestionSelect }: Re
 
   return (
     <div className="flex h-full flex-col p-5 sm:p-6 lg:p-8">
-      <div className="flex flex-1 flex-col gap-6 overflow-hidden lg:flex-row lg:gap-8">
+      <div className="flex flex-1 flex-col gap-6 lg:flex-row lg:items-start lg:gap-8">
         {isDesktop ? (
           <>
-            <section className="flex w-full max-w-3xl flex-col items-start">
+            <section className="flex w-full min-w-0 flex-1 flex-col items-start">
               <p role="status" aria-live="polite" className="mb-5 text-sm font-medium text-slate-300">
                 {resultCountLabel}
               </p>
@@ -106,15 +106,15 @@ export function ResultsView({ animalsData, searchInput, onSuggestionSelect }: Re
                   previousLabel="<"
                   renderOnZeroPageCount={null}
                   className="mt-2 flex flex-wrap items-center gap-2 text-sm text-slate-200"
-                  pageClassName="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-900/70 transition hover:border-lime-300/60 hover:text-lime-200"
+                  pageClassName="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-950 transition hover:border-lime-300/60 hover:text-lime-200"
                   activeClassName="border-lime-300 bg-lime-300/10 font-semibold text-lime-200"
-                  previousClassName="flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-900/70 px-3 transition hover:border-lime-300/60 hover:text-lime-200"
-                  nextClassName="flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-900/70 px-3 transition hover:border-lime-300/60 hover:text-lime-200"
+                  previousClassName="flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-950 px-3 transition hover:border-lime-300/60 hover:text-lime-200"
+                  nextClassName="flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-950 px-3 transition hover:border-lime-300/60 hover:text-lime-200"
                   disabledClassName="opacity-40"
                 />
               ) : null}
             </section>
-            <section className="w-full max-w-[32rem]">
+            <section className="w-full lg:max-w-[32rem] lg:flex-[0_0_32rem]">
               {selectedCard && <ResultContent animal={selectedCard} id={desktopDetailPanelId} />}
             </section>
           </>
@@ -150,10 +150,10 @@ export function ResultsView({ animalsData, searchInput, onSuggestionSelect }: Re
                 previousLabel="<"
                 renderOnZeroPageCount={null}
                 className="mt-2 flex flex-wrap items-center gap-2 text-sm text-slate-200"
-                pageClassName="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-900/70 transition hover:border-lime-300/60 hover:text-lime-200"
+                pageClassName="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-950 transition hover:border-lime-300/60 hover:text-lime-200"
                 activeClassName="border-lime-300 bg-lime-300/10 font-semibold text-lime-200"
-                previousClassName="flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-900/70 px-3 transition hover:border-lime-300/60 hover:text-lime-200"
-                nextClassName="flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-900/70 px-3 transition hover:border-lime-300/60 hover:text-lime-200"
+                previousClassName="flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-950 px-3 transition hover:border-lime-300/60 hover:text-lime-200"
+                nextClassName="flex h-10 min-w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-950 px-3 transition hover:border-lime-300/60 hover:text-lime-200"
                 disabledClassName="opacity-40"
               />
             ) : null}
