@@ -64,9 +64,13 @@ describe("ResultsRoute", () => {
     expect(screen.queryByText(/version 0\.1\.0/i)).not.toBeInTheDocument();
 
     const details = screen.getByLabelText("Snow Leopard details");
+    const activeButton = screen.getByRole("button", { name: "Snow Leopard" });
 
+    expect(screen.getByRole("status")).toHaveTextContent("About 1 result");
     expect(within(details).getByRole("heading", { name: "Snow Leopard" })).toBeInTheDocument();
     expect(within(details).getByText("Mountain ranges")).toBeInTheDocument();
+    expect(activeButton).toHaveAttribute("aria-pressed", "true");
+    expect(activeButton).toHaveAttribute("aria-controls", details.id);
   });
 
   it("recovers from no results by composing suggestion selection through search state", () => {
@@ -77,7 +81,7 @@ describe("ResultsRoute", () => {
     fireEvent.click(screen.getByRole("button", { name: "species" }));
 
     expect(screen.getByDisplayValue("species")).toBeInTheDocument();
-    expect(screen.getByText("About 2 results")).toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent("About 2 results");
     expect(screen.queryByText("No matches found for penguin.")).not.toBeInTheDocument();
   });
 });

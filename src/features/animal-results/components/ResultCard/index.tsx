@@ -6,9 +6,10 @@ interface IResultCard {
   onSelect: () => void;
   ariaControls?: string;
   ariaExpanded?: boolean;
+  ariaPressed?: boolean;
 }
 
-export function ResultCard({ animal, isActive, onSelect, ariaControls, ariaExpanded }: IResultCard) {
+export function ResultCard({ animal, isActive, onSelect, ariaControls, ariaExpanded, ariaPressed }: IResultCard) {
   return (
     <article
       className={`mb-4 w-full rounded-[28px] border p-5 text-left transition-colors ${
@@ -25,6 +26,7 @@ export function ResultCard({ animal, isActive, onSelect, ariaControls, ariaExpan
         onClick={onSelect}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
+        aria-pressed={ariaPressed}
         className="mb-2 bg-transparent text-left text-2xl font-semibold text-slate-50 transition-all hover:text-lime-200"
       >
         {animal.title}

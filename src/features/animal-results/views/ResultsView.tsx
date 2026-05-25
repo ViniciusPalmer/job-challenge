@@ -21,6 +21,7 @@ export function ResultsView({ animalsData, searchInput, onSuggestionSelect }: Re
   const { filteredAnimals, foundResults, suggestionList } = useFilteredAnimals(animalsData, searchInput);
   const { currentItems, pageCount, handlePageChange } = usePaginatedAnimals(filteredAnimals, 4);
   const resultCountLabel = `About ${filteredAnimals.length} result${filteredAnimals.length === 1 ? "" : "s"}`;
+  const desktopDetailPanelId = "animal-details-panel";
 
   useEffect(() => {
     function updateViewport() {
@@ -81,13 +82,17 @@ export function ResultsView({ animalsData, searchInput, onSuggestionSelect }: Re
         {isDesktop ? (
           <>
             <section className="flex w-full max-w-3xl flex-col items-start">
-              <p className="mb-5 text-sm font-medium text-slate-300">{resultCountLabel}</p>
+              <p role="status" aria-live="polite" className="mb-5 text-sm font-medium text-slate-300">
+                {resultCountLabel}
+              </p>
               {currentItems.map((animal) => (
                 <ResultCard
                   key={animal.id}
                   animal={animal}
                   isActive={selectedCard?.id === animal.id}
                   onSelect={() => setSelectedCard(animal)}
+                  ariaControls={desktopDetailPanelId}
+                  ariaPressed={selectedCard?.id === animal.id}
                 />
               ))}
               {pageCount > 1 ? (
@@ -110,12 +115,14 @@ export function ResultsView({ animalsData, searchInput, onSuggestionSelect }: Re
               ) : null}
             </section>
             <section className="w-full max-w-[32rem]">
-              {selectedCard && <ResultContent animal={selectedCard} />}
+              {selectedCard && <ResultContent animal={selectedCard} id={desktopDetailPanelId} />}
             </section>
           </>
         ) : (
           <section className="flex w-full flex-col items-start">
-            <p className="mb-5 text-sm font-medium text-slate-300">{resultCountLabel}</p>
+            <p role="status" aria-live="polite" className="mb-5 text-sm font-medium text-slate-300">
+              {resultCountLabel}
+            </p>
             {currentItems.map((animal) => (
               <ResultContentMobile
                 key={animal.id}

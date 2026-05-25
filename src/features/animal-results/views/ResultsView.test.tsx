@@ -42,20 +42,23 @@ describe("ResultsView", () => {
   it("selects the first filtered result by default on desktop", () => {
     render(<ResultsView animalsData={animals} searchInput="animal" />);
 
-    expect(screen.getByText("About 5 results")).toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent("About 5 results");
 
     const detail = screen.getByLabelText("Animal 1 details");
+    const activeButton = screen.getByRole("button", { name: "Animal 1" });
 
     expect(within(detail).getByText("Selected result")).toBeInTheDocument();
     expect(within(detail).getByRole("heading", { name: "Animal 1" })).toBeInTheDocument();
     expect(within(detail).getByText("Animal 1 habitat")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Animal 1" })).not.toHaveAttribute("aria-pressed");
+    expect(activeButton).toHaveAttribute("aria-pressed", "true");
+    expect(activeButton).toHaveAttribute("aria-controls", detail.id);
+    expect(screen.getByRole("button", { name: "Animal 2" })).toHaveAttribute("aria-pressed", "false");
   });
 
   it("resets the active pagination page when filtering changes the dataset", () => {
     const { rerender } = render(<ResultsView animalsData={animals} searchInput="species" />);
 
-    fireEvent.click(screen.getByText("2"));
+    fireEvent.click(screen.getByRole("button", { name: "Page 2" }));
 
     expect(screen.getByRole("button", { name: "Animal 5" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Page 2 is your current page" })).toBeInTheDocument();
@@ -72,13 +75,15 @@ describe("ResultsView", () => {
     render(<ResultsView animalsData={animals} searchInput="species" />);
 
     fireEvent.click(screen.getByRole("button", { name: "Animal 2" }));
-    fireEvent.click(screen.getByText("2"));
+    fireEvent.click(screen.getByRole("button", { name: "Page 2" }));
 
     const detail = screen.getByLabelText("Animal 5 details");
+    const activeButton = screen.getByRole("button", { name: "Animal 5" });
 
     expect(within(detail).getByRole("heading", { name: "Animal 5" })).toBeInTheDocument();
     expect(within(detail).getByText("Animal 5 habitat")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Animal 5" })).not.toHaveAttribute("aria-pressed");
+    expect(activeButton).toHaveAttribute("aria-pressed", "true");
+    expect(activeButton).toHaveAttribute("aria-controls", detail.id);
     expect(screen.queryByRole("button", { name: "Animal 2" })).not.toBeInTheDocument();
   });
 
@@ -88,6 +93,7 @@ describe("ResultsView", () => {
     fireEvent.click(screen.getByRole("button", { name: "Animal 2" }));
 
     const detail = screen.getByLabelText("Animal 2 details");
+    const activeButton = screen.getByRole("button", { name: "Animal 2" });
 
     expect(within(detail).getByRole("heading", { name: "Animal 2" })).toBeInTheDocument();
     expect(within(detail).getByText("Animal 2 habitat")).toBeInTheDocument();
@@ -96,6 +102,8 @@ describe("ResultsView", () => {
     expect(within(detail).getByText("Animal 2 summary")).toBeInTheDocument();
     expect(within(detail).getByText("Type")).toBeInTheDocument();
     expect(within(detail).getByText("Selected result")).toBeInTheDocument();
+    expect(activeButton).toHaveAttribute("aria-pressed", "true");
+    expect(activeButton).toHaveAttribute("aria-controls", detail.id);
   });
 
   it("emits suggestion recovery actions when there are no matches", () => {
